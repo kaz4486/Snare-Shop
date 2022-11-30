@@ -1,0 +1,25 @@
+.photo_thumbnail {
+  object-fit: cover;
+  max-width: 280px;
+  max-height: 200px;
+
+  -webkit-box-shadow: -3px 7px 13px -37px rgb(72, 75, 110);
+  -moz-box-shadow: -3px 7px 13px -37px rgba(66, 68, 90, 1);
+  box-shadow: -3px 7px 13px -37px rgba(66, 68, 90, 1);
+}
+
+.cart_div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.cart_button {
+  border-radius: 10%;
+}
+
+.cart_icon {
+  top: 45%;
+  left: 45%;
+}

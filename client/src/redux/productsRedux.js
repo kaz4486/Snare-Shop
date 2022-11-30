@@ -1,4 +1,14 @@
+import axios from 'axios';
+import { API_URL } from '../config/config';
+
 // selectors
+export const getProducts = ({ products }) => products.data;
+
+export const getRequest = ({ products }) => products.request;
+
+export const getProductById = ({ products }, id) => {
+  return products.data.find((product) => product.id === id);
+};
 
 // actions
 
@@ -16,15 +26,28 @@ export const startRequest = () => ({ type: START_REQUEST });
 export const endRequest = () => ({ type: END_REQUEST });
 export const errorRequest = () => ({ type: ERROR_REQUEST });
 
-export const loadProducts = () => ({ type: LOAD_PRODUCTS });
+export const loadProducts = (payload) => ({ payload, type: LOAD_PRODUCTS });
 
 // thunks
+
+export const loadProductsRequest = () => {
+  return async (dispatch) => {
+    dispatch(startRequest());
+    try {
+      let res = await axios.get(`${API_URL}/products`);
+      dispatch(loadProducts(res.data));
+      dispatch(endRequest());
+    } catch (e) {
+      dispatch(errorRequest(e.message));
+    }
+  };
+};
 
 // initialState
 
 const initialState = {
   data: [],
-  request: { pending: false, error: null, success: false },
+  request: { pending: false, error: null, success: null },
 };
 
 // reducer
