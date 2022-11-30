@@ -4,6 +4,7 @@ import { getCart, getCartTotal } from '../../../redux/cartRedux';
 import styles from '../Checkout/Checkout.module.scss';
 import { useEffect, useState } from 'react';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 const Checkout = () => {
   const cart = useSelector(getCart);
@@ -14,9 +15,13 @@ const Checkout = () => {
     lastName: '',
     email: '',
     street: '',
-    house_number: null,
+    house_number: '',
     city: '',
   });
+
+  const handleSubmitOrder = () => {};
+
+  console.log(userData);
 
   //imie, nazwisko, email, ulica, numer, miasto,
 
@@ -24,6 +29,15 @@ const Checkout = () => {
     products: cart,
     userData,
     totalPrice: cartTotalSum,
+  };
+
+  const updateTextField = ({ target }) => {
+    const { value, name } = target;
+    setUserData({ ...userData, [name]: value });
+  };
+  const updateNumberField = ({ target }) => {
+    const { value, name } = target;
+    setUserData({ ...userData, [name]: parseInt(value) });
   };
 
   if (!cart.length) return <p>no products</p>;
@@ -72,16 +86,14 @@ const Checkout = () => {
         {' '}
         <span>{cartTotalSum}</span>
       </Col>
-      <Col sm={6}>
-        <Button>Order</Button>
-      </Col>
       <Form>
         <FormGroup>
           <Label>First name</Label>
           <Input
             type="text"
             value={userData.firstName}
-            name="userFirstName"
+            name="firstName"
+            onChange={updateTextField}
             id="userFirstName"
             placeholder="John"
           />
@@ -91,11 +103,67 @@ const Checkout = () => {
           <Input
             type="text"
             value={userData.lastName}
-            name="userLastName"
+            name="lastName"
+            onChange={updateTextField}
             id="userLastName"
-            placeholder="John"
+            placeholder="Doe"
           />
         </FormGroup>
+        <FormGroup>
+          <Label>Email</Label>
+          <Input
+            type="email"
+            value={userData.email}
+            name="email"
+            onChange={updateTextField}
+            id="userEmail"
+            placeholder="johndoe@example.com"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Street</Label>
+          <Input
+            type="text"
+            value={userData.street}
+            name="street"
+            onChange={updateTextField}
+            id="userStreet"
+            placeholder="Pawtucket Ave"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>House number</Label>
+          <Input
+            type="text"
+            inputmode="numeric"
+            value={userData.house_number}
+            name="house_number"
+            onChange={updateNumberField}
+            id="userCity"
+            placeholder="2442"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>City</Label>
+          <Input
+            type="text"
+            value={userData.city}
+            name="city"
+            onChange={updateTextField}
+            id="userCity"
+            placeholder="Pawtucket"
+          />
+        </FormGroup>
+        <Row>
+          <Col sm={6}>
+            <Button>Order</Button>
+          </Col>
+          <Col sm={6}>
+            <Link to="/cart">
+              <Button>Back to cart</Button>
+            </Link>
+          </Col>
+        </Row>
       </Form>
     </Container>
   );
