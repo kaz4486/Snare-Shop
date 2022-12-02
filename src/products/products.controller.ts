@@ -1,18 +1,18 @@
 import { Controller, Get, Param, ParseUUIDPipe } from '@nestjs/common';
-import { Product } from './interfaces/product.interface';
+import { Product } from './db/products.entity';
 import { ProductsDataService } from './products-data.service';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private productRepository: ProductsDataService) {}
+  constructor(private productService: ProductsDataService) {}
   @Get()
-  getAllProducts(): Array<Product> {
-    return this.productRepository.getAllProducts();
+  async getAllProducts(): Promise<Product[]> {
+    return await this.productService.getAllProducts();
   }
   @Get()
-  getProductById(
+  async getProductById(
     @Param('id', new ParseUUIDPipe({ version: '4' })) id: string,
-  ): Product {
-    return this.productRepository.getProductById(id);
+  ): Promise<Product> {
+    return await this.productService.getProductById(id);
   }
 }

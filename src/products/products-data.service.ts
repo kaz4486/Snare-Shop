@@ -1,16 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import { Product } from './interfaces/product.interface';
-import { v4 as uuidv4 } from 'uuid';
+import { Product } from './db/products.entity';
+import { ProductRepository } from './db/products.repository';
 
 @Injectable()
 export class ProductsDataService {
+  constructor(private productRepository: ProductRepository) {}
   private products: Array<Product> = [];
 
-  getAllProducts(): Array<Product> {
-    return this.products;
+  getAllProducts(): Promise<Product[]> {
+    return this.productRepository.find();
   }
 
-  getProductById(id: string): Product {
-    return this.products.find((i) => i.id === id);
+  async getProductById(id: string): Promise<Product> {
+    return await this.productRepository.findOneBy({ id });
   }
 }

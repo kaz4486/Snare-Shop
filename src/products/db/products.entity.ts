@@ -11,8 +11,19 @@ export class Product {
   name: string;
 
   @Column({ length: 100 })
-  photoName: string;
+  mainPhoto: string;
 
   @Column({ default: 0, type: 'float' })
   price: number;
+
+  @Column({ type: 'text', nullable: true })
+  description: string;
+
+  @Column('simple-array')
+  photos: Array<string>;
+
+  @Column({
+    default: 1,
+  })
+  count: number;
 }
