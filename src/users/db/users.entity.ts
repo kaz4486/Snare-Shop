@@ -1,8 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-// import { Roles } from '../../shared/enums/roles.enums';
-import { UserAddress } from './users-addresses.entity';
-
-// import { UserAddress } from './addresses.entity';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity({
   name: 'users',
@@ -20,8 +16,14 @@ export class User {
   @Column({ length: 50 })
   email: string;
 
-  @OneToMany((type) => UserAddress, (address) => address.user)
-  address: UserAddress[];
+  @Column({ length: 50 })
+  street: string;
+
+  @Column()
+  house_number: number;
+
+  @Column({ length: 50 })
+  city: string;
 
   //   @Column({ length: 50 })
   //   street: string;

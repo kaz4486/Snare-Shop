@@ -1,5 +1,4 @@
 import styles from './AmountWidget.module.scss';
-import { useState } from 'react';
 
 const AmountWidget = ({ value, setProductAmount, handleAmountChange }) => {
   const handleDecreaseValue = () => {

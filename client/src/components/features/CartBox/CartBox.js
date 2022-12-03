@@ -11,7 +11,7 @@ import {
 } from '../../../redux/cartRedux';
 
 const CartBox = ({ product }) => {
-  const [productAmount, setProductAmount] = useState(product.amount);
+  const [productAmount, setProductAmount] = useState(product.count);
   const [comment, setComment] = useState(product.comment);
 
   console.log(comment);
@@ -43,15 +43,11 @@ const CartBox = ({ product }) => {
     dispatch(
       updateProductCartAmount({
         id: product.id,
-        amount: newAmount,
+        count: newAmount,
         totalPrice: product.price * newAmount,
       }),
     );
   };
-
-  //   const prepareProductOrder = () => {
-
-  //   }
 
   return (
     <Container>

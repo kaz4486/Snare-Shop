@@ -53,7 +53,17 @@ const initialState = [];
 const cartReducer = (statePart = initialState, action = {}) => {
   switch (action.type) {
     case ADD_TO_CART:
-      return [...statePart, { ...action.payload, id: uuid4() }];
+      const existingProduct = statePart.find(
+        (product) => product.id === action.payload.id,
+      );
+      if (existingProduct) {
+        existingProduct.count = existingProduct.count + action.payload.count;
+        existingProduct.totalPrice =
+          existingProduct.totalPrice + action.payload.totalPrice;
+        return statePart;
+      } else {
+      }
+      return [...statePart, { ...action.payload }];
     case REMOVE_FROM_CART:
       return statePart.filter((product) => product.id !== action.payload);
     case LOAD_CART:

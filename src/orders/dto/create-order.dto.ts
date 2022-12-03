@@ -1,3 +1,4 @@
+import { CreateUserDto } from './../../users/dto/create-user.dto';
 import { Type } from 'class-transformer';
 import {
   IsNotEmpty,
@@ -9,17 +10,32 @@ import {
 import { Column } from 'typeorm';
 
 export class CreateOrderDto {
-  @IsNotEmpty()
-  @IsUUID()
-  userId: string;
-
-  @IsNotEmpty()
-  @IsUUID()
-  userAddressesId: string;
+  @ValidateNested({ each: true })
+  @Type(() => CreateUserDto)
+  user: CreateUserDto;
 
   @ValidateNested({ each: true })
   @Type(() => CreateOrderedProductDto)
   products: Array<CreateOrderedProductDto>;
+
+  @Column({
+    default: 0,
+    type: 'float',
+  })
+  totalPrice: number;
+}
+
+export class CreateOrderedProductDto {
+  @IsNotEmpty()
+  @IsUUID()
+  id: string;
+
+  @IsNotEmpty()
+  name: string;
+
+  @Min(1)
+  @IsNumber()
+  count: number;
 
   @Column({
     type: 'text',
@@ -27,19 +43,7 @@ export class CreateOrderDto {
   })
   comment: string;
 
-  @Column({
-    default: 0,
-    type: 'float',
-  })
-  price: number;
-}
-
-export class CreateOrderedProductDto {
-  @IsNotEmpty()
-  @IsUUID()
-  productId: string;
-
-  @Min(0)
+  @Min(1)
   @IsNumber()
-  count: number;
+  price: number;
 }

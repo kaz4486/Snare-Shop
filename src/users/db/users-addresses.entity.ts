@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { User } from './users.entity';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity({
   name: 'user_addresses',
@@ -19,8 +18,8 @@ export class UserAddress {
   })
   house_number: number;
 
-  @ManyToOne(() => User, (user) => user.id, {
-    onDelete: 'CASCADE',
-  })
-  user: User;
+  //   @ManyToOne(() => User, (user) => user.id, {
+  //     onDelete: 'CASCADE',
+  //   })
+  //   user: User;
 }

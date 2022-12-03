@@ -1,11 +1,5 @@
 import { Product } from 'src/products/db/products.entity';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Order } from './orders.entity';
 
 @Entity({
@@ -21,9 +15,6 @@ export class OrderedProduct {
   @ManyToOne(() => Product, (product) => product.id, { eager: true })
   product: Product;
 
-  @CreateDateColumn({ type: 'timestamp' })
-  createdAt: Date;
-
   @Column({
     default: 0,
     type: 'float',
@@ -34,4 +25,10 @@ export class OrderedProduct {
     default: 1,
   })
   count: number;
+
+  @Column({
+    type: 'text',
+    nullable: true,
+  })
+  comment: string;
 }

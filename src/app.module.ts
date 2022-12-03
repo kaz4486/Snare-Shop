@@ -1,3 +1,4 @@
+import { UsersModule } from './users/users.module';
 import {
   MiddlewareConsumer,
   Module,
@@ -19,6 +20,7 @@ import * as cors from 'cors';
   imports: [
     ProductsModule,
     OrdersModule,
+    UsersModule,
     TypeOrmModule.forRoot(config as ConnectionOptions),
   ],
   controllers: [AppController],

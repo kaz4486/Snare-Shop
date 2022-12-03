@@ -30,9 +30,10 @@ const Product = () => {
   const productPreparedToCart = {
     name: product.name,
     price: product.price,
-    amount: parseInt(productAmount),
+    count: parseInt(productAmount),
     totalPrice: product.price * parseInt(productAmount),
     comment: '',
+    id: product.id,
   };
 
   const handleAddToCart = (e) => {

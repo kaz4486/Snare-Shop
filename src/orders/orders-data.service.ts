@@ -1,4 +1,3 @@
-import { UserAddress } from './../users/db/users-addresses.entity';
 import { OrderedProduct } from './db/ordered-products.entity';
 import { Injectable } from '@nestjs/common';
 import { ProductRepository } from 'src/products/db/products.repository';
@@ -24,18 +23,29 @@ export class OrdersDataService {
     productsToSave: CreateOrderedProductDto[],
   ): Promise<OrderedProduct[]> {
     const orderedProducts: OrderedProduct[] = [];
+    console.log('productsToSave', productsToSave);
 
     for (let i = 0; i < productsToSave.length; i++) {
       const orderedProduct = new OrderedProduct();
+      console.log(productsToSave[i].id);
       const productFromDB = await this.productRepository.findOneBy({
-        id: productsToSave[i].productId,
+        id: productsToSave[i].id,
       });
+
+      console.log(productFromDB);
 
       orderedProduct.product = new Product();
       orderedProduct.product.id = productFromDB.id;
+
       orderedProduct.product.name = productFromDB.name;
-      orderedProduct.count = productFromDB.count;
+      orderedProduct.count = productsToSave[i].count;
+
       orderedProduct.price = productFromDB.price;
+
+      orderedProduct.comment = productsToSave[i].comment;
+      //   productsToSave.forEach((product) => {
+      //     orderedProduct.comment = product.comment;
+      //   });
 
       await this.orderedProductRepository.save(orderedProduct);
       orderedProducts.push(orderedProduct);
@@ -45,15 +55,20 @@ export class OrdersDataService {
   }
 
   async addOrder(order: CreateOrderDto): Promise<Order> {
+    console.log('order', order);
     const orderToSave = new Order();
 
     orderToSave.orderedProducts = await this.saveOrderedProducts(
       order.products,
     );
+    console.log(orderToSave.orderedProducts);
     orderToSave.user = new User();
-    orderToSave.user.id = order.userId;
-    orderToSave.userAddress = new UserAddress();
-    orderToSave.comment = order.comment;
+    orderToSave.user.firstName = order.user.firstName;
+    orderToSave.user.lastName = order.user.lastName;
+    orderToSave.user.email = order.user.email;
+    orderToSave.user.city = order.user.city;
+    orderToSave.user.house_number = order.user.house_number;
+    orderToSave.user.street = order.user.street;
     orderToSave.createdAt = new Date();
     orderToSave.totalPrice = 0;
 
@@ -66,6 +81,7 @@ export class OrdersDataService {
       const productAmount = product.count;
       orderToSave.totalPrice += productPrice * productAmount;
     });
+
     return await this.orderRepository.save(orderToSave);
   }
 }

@@ -1,14 +1,17 @@
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCart, getCartTotal } from '../../../redux/cartRedux';
 import styles from '../Checkout/Checkout.module.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { createOrderRequest } from '../../../redux/orderRedux';
 
 const Checkout = () => {
   const cart = useSelector(getCart);
   const cartTotalSum = useSelector(getCartTotal);
+
+  const dispatch = useDispatch();
 
   const [userData, setUserData] = useState({
     firstName: '',
@@ -19,17 +22,22 @@ const Checkout = () => {
     city: '',
   });
 
-  const handleSubmitOrder = () => {};
-
-  console.log(userData);
-
-  //imie, nazwisko, email, ulica, numer, miasto,
-
   const order = {
     products: cart,
-    userData,
+    user: userData,
     totalPrice: cartTotalSum,
   };
+  console.log('order products', order.products);
+  console.log('cart', cart);
+
+  const handleSubmitOrder = (e) => {
+    e.preventDefault();
+    console.log('jest');
+    dispatch(createOrderRequest(order));
+  };
+
+  //imie, nazwisko, email, ulica, numer, miasto,
+  //button ma wracać do cart
 
   const updateTextField = ({ target }) => {
     const { value, name } = target;
@@ -68,10 +76,10 @@ const Checkout = () => {
                 <span>{product.price}</span>
               </Col>
               <Col sm={2}>
-                <span>{product.amount}</span>
+                <span>{product.count}</span>
               </Col>
               <Col sm={2}>
-                <span>{product.price * product.amount}</span>
+                <span>{product.price * product.count}</span>
               </Col>
             </Row>
             <Row>
@@ -86,7 +94,7 @@ const Checkout = () => {
         {' '}
         <span>{cartTotalSum}</span>
       </Col>
-      <Form>
+      <Form onSubmit={handleSubmitOrder}>
         <FormGroup>
           <Label>First name</Label>
           <Input
@@ -156,14 +164,11 @@ const Checkout = () => {
         </FormGroup>
         <Row>
           <Col sm={6}>
-            <Button>Order</Button>
+            <Button type="submit">Order</Button>
           </Col>
-          <Col sm={6}>
-            <Link to="/cart">
-              <Button>Back to cart</Button>
-            </Link>
-          </Col>
+          <Col sm={6}></Col>
         </Row>
+        <Button>Back to cart</Button>
       </Form>
     </Container>
   );
