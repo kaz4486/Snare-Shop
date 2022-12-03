@@ -14,8 +14,6 @@ const CartBox = ({ product }) => {
   const [productAmount, setProductAmount] = useState(product.count);
   const [comment, setComment] = useState(product.comment);
 
-  console.log(comment);
-
   //   const [order, setOrder] = useState({
   //     name: product.name,
   //     price: product.price,

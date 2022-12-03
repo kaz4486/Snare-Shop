@@ -1,11 +1,12 @@
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCart, getCartTotal } from '../../../redux/cartRedux';
 import styles from '../Checkout/Checkout.module.scss';
 import { useState } from 'react';
-import { Form, FormGroup, Label, Input } from 'reactstrap';
+
 import { Link } from 'react-router-dom';
 import { createOrderRequest } from '../../../redux/orderRedux';
+import { useForm } from 'react-hook-form';
 
 const Checkout = () => {
   const cart = useSelector(getCart);
@@ -18,7 +19,7 @@ const Checkout = () => {
     lastName: '',
     email: '',
     street: '',
-    house_number: '',
+    house_number: 0,
     city: '',
   });
 
@@ -27,12 +28,14 @@ const Checkout = () => {
     user: userData,
     totalPrice: cartTotalSum,
   };
-  console.log('order products', order.products);
-  console.log('cart', cart);
 
-  const handleSubmitOrder = (e) => {
-    e.preventDefault();
-    console.log('jest');
+  const {
+    register,
+    handleSubmit: validate,
+    formState: { errors },
+  } = useForm();
+
+  const handleSubmit = (e) => {
     dispatch(createOrderRequest(order));
   };
 
@@ -94,81 +97,135 @@ const Checkout = () => {
         {' '}
         <span>{cartTotalSum}</span>
       </Col>
-      <Form onSubmit={handleSubmitOrder}>
-        <FormGroup>
-          <Label>First name</Label>
-          <Input
+      <Form onSubmit={validate(handleSubmit)}>
+        <Form.Group controlId="formFirstName">
+          <Form.Label>First name</Form.Label>
+          <Form.Control
+            {...register('firstName', {
+              required: true,
+              minLength: 2,
+              maxLength: 30,
+            })}
             type="text"
             value={userData.firstName}
             name="firstName"
             onChange={updateTextField}
-            id="userFirstName"
             placeholder="John"
           />
-        </FormGroup>
-        <FormGroup>
-          <Label>Last name</Label>
-          <Input
+          {errors.firstName && (
+            <small className="d-block form-text text-danger mt-2">
+              This field is required, minimum 2 signs, max 30 signs
+            </small>
+          )}
+        </Form.Group>
+        <Form.Group controlId="formLastName">
+          <Form.Label>Last name</Form.Label>
+          <Form.Control
+            {...register('lastName', {
+              required: true,
+              minLength: 2,
+              maxLength: 30,
+            })}
             type="text"
             value={userData.lastName}
             name="lastName"
             onChange={updateTextField}
-            id="userLastName"
             placeholder="Doe"
           />
-        </FormGroup>
-        <FormGroup>
-          <Label>Email</Label>
-          <Input
+          {errors.lastName && (
+            <small className="d-block form-text text-danger mt-2">
+              This field is required, minimum 2 signs, max 30 signs
+            </small>
+          )}
+        </Form.Group>
+        <Form.Group controlId="formEmail">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            {...register('email', {
+              required: true,
+              minLength: 2,
+              maxLength: 30,
+            })}
             type="email"
             value={userData.email}
             name="email"
             onChange={updateTextField}
-            id="userEmail"
             placeholder="johndoe@example.com"
           />
-        </FormGroup>
-        <FormGroup>
-          <Label>Street</Label>
-          <Input
+          {errors.email && (
+            <small className="d-block form-text text-danger mt-2">
+              This field is required, minimum 6 signs, max 30 signs
+            </small>
+          )}
+        </Form.Group>
+        <Form.Group controlId="formStreet">
+          <Form.Label>Street</Form.Label>
+          <Form.Control
+            {...register('street', {
+              required: true,
+              minLength: 5,
+              maxLength: 30,
+            })}
             type="text"
             value={userData.street}
             name="street"
             onChange={updateTextField}
-            id="userStreet"
             placeholder="Pawtucket Ave"
           />
-        </FormGroup>
-        <FormGroup>
-          <Label>House number</Label>
-          <Input
-            type="text"
-            inputmode="numeric"
+          {errors.street && (
+            <small className="d-block form-text text-danger mt-2">
+              This field is required, minimum 5 signs, max 30 signs
+            </small>
+          )}
+        </Form.Group>
+        <Form.Group controlId="formHouseNumber">
+          <Form.Label>House number</Form.Label>
+          <Form.Control
+            {...register('houseNumber', {
+              required: true,
+              min: 1,
+            })}
+            // type="text"
+            // inputmode="numeric"
+            type="number"
             value={userData.house_number}
             name="house_number"
             onChange={updateNumberField}
-            id="userCity"
             placeholder="2442"
           />
-        </FormGroup>
-        <FormGroup>
-          <Label>City</Label>
-          <Input
+          {errors.houseNumber && (
+            <small className="d-block form-text text-danger mt-2">
+              This field is required
+            </small>
+          )}
+        </Form.Group>
+        <Form.Group controlId="formCity">
+          <Form.Label>City</Form.Label>
+          <Form.Control
+            {...register('city', {
+              required: true,
+            })}
             type="text"
             value={userData.city}
             name="city"
             onChange={updateTextField}
-            id="userCity"
             placeholder="Pawtucket"
           />
-        </FormGroup>
+          {errors.city && (
+            <small className="d-block form-text text-danger mt-2">
+              This field is required
+            </small>
+          )}
+        </Form.Group>
         <Row>
           <Col sm={6}>
             <Button type="submit">Order</Button>
           </Col>
           <Col sm={6}></Col>
         </Row>
-        <Button>Back to cart</Button>
+        <Link to="/cart">
+          <Button>Back to cart</Button>
+        </Link>
       </Form>
     </Container>
   );

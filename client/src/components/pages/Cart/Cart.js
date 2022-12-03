@@ -8,8 +8,6 @@ const Cart = () => {
   const cart = useSelector(getCart);
   const navigate = useNavigate();
 
-  console.log(cart);
-
   // const [productOrder, setProductOrder] = useState({});
 
   // // const orders = [];
