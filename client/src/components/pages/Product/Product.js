@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import styles from './Product.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
-import { addToCart } from '../../../redux/cartRedux';
+import { addToCart, addToCartRequest } from '../../../redux/cartRedux';
 import AmountWidget from '../../features/AmountWidget/AmountWidget';
 
 const Product = () => {
@@ -20,6 +20,8 @@ const Product = () => {
   const product = useSelector((state) => getProductById(state, id));
   const request = useSelector(getRequest);
   const navigate = useNavigate();
+
+  console.log(product.photos);
 
   const [productAmount, setProductAmount] = useState('1');
 
@@ -39,7 +41,9 @@ const Product = () => {
   const handleAddToCart = (e) => {
     e.preventDefault();
     dispatch(addToCart(productPreparedToCart));
-    navigate('/cart');
+    setTimeout(() => {
+      return navigate('/cart');
+    }, 1000);
   };
 
   if (request.pending) return <Progress animated color="primary" value={50} />;

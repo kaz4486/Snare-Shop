@@ -1,10 +1,10 @@
 import Products from '../../features/Products/Products';
+import BestSellers from '../../views/BestSellers/BestSellers';
 
 const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
-      <Products />
+      <BestSellers />
     </div>
   );
 };

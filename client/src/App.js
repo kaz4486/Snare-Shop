@@ -1,4 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
+
+import './styles/bootstrap.scss';
+import './styles/global.scss';
+
 import Home from './components/pages/Home/Home';
 import Product from './components/pages/Product/Product';
 import Cart from './components/pages/Cart/Cart';

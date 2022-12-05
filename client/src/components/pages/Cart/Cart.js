@@ -1,12 +1,25 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getCart } from '../../../redux/cartRedux';
+import { getCart, getCartTotal, loadCart } from '../../../redux/cartRedux';
 import CartBox from '../../features/CartBox/CartBox';
+import { useEffect } from 'react';
 
 const Cart = () => {
   const cart = useSelector(getCart);
+  const cartTotal = useSelector(getCartTotal);
+  const dispatch = useDispatch();
+
+  console.log(cart);
+
+  // const cartProducts = JSON.parse(localStorage.getItem('cart'));
+  // console.log(cartProducts);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(loadCart());
+  }, [dispatch]);
 
   // const [productOrder, setProductOrder] = useState({});
 
@@ -52,6 +65,9 @@ const Cart = () => {
           />
         </div>
       ))}
+      <Row>
+        <span>Total price: {cartTotal}</span>
+      </Row>
       <Button onClick={handleCheckoutClick}>checkout</Button>
     </Container>
   );

@@ -25,21 +25,19 @@ const Products = () => {
   if (request.success)
     return (
       <Container>
-        <Col>
-          <Row>
-            {products.map((product) => (
-              <Col
-                key={product.id}
-                xs={12}
-                sm={6}
-                lg={4}
-                className="justify-content-center mb-2"
-              >
-                <ProductSummary key={product.id} {...product} />{' '}
-              </Col>
-            ))}
-          </Row>
-        </Col>
+        <Row>
+          {products.map((product) => (
+            <Col
+              key={product.id}
+              xs={12}
+              sm={6}
+              lg={4}
+              className="justify-content-center mb-2"
+            >
+              <ProductSummary key={product.id} {...product} />{' '}
+            </Col>
+          ))}
+        </Row>
       </Container>
     );
 };

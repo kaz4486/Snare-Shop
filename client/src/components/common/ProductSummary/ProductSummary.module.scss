@@ -1,0 +1,25 @@
+@import '../../../styles/settings.scss';
+
+.product {
+  border: solid 1px;
+  border-color: #154c79;
+  border-radius: 2%;
+  text-align: center;
+  width: 320px;
+
+  .photo {
+    width: 300px;
+    height: 250px;
+  }
+
+  .title {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  .price {
+    background: #154c79;
+    color: white;
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+}

@@ -35,7 +35,7 @@ const Checkout = () => {
     formState: { errors },
   } = useForm();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     dispatch(createOrderRequest(order));
   };
 
