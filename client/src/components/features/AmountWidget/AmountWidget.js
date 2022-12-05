@@ -20,7 +20,7 @@ const AmountWidget = ({ value, setProductAmount, handleAmountChange }) => {
   };
 
   return (
-    <div>
+    <div className={styles.widget}>
       <button onClick={handleDecreaseValue}>-</button>
 
       <input
@@ -29,7 +29,7 @@ const AmountWidget = ({ value, setProductAmount, handleAmountChange }) => {
         max="10"
         value={value}
         readOnly
-        className={styles.input}
+
         //
         // onKeyPress={(event) => {
         //   if (!/[0-9]/.test(event.key)) {

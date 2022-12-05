@@ -1,16 +1,19 @@
 import { Button, Col, Container, Row, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCart, getCartTotal } from '../../../redux/cartRedux';
+import { getCart, getCartTotal, loadCart } from '../../../redux/cartRedux';
 import styles from '../Checkout/Checkout.module.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 import { createOrderRequest } from '../../../redux/orderRedux';
 import { useForm } from 'react-hook-form';
+import ProductBar from '../../common/ProductBar/ProductBar';
 
 const Checkout = () => {
   const cart = useSelector(getCart);
-  const cartTotalSum = useSelector(getCartTotal);
+  const cartTotal = useSelector(getCartTotal);
+
+  console.log(cart);
 
   const dispatch = useDispatch();
 
@@ -26,7 +29,7 @@ const Checkout = () => {
   const order = {
     products: cart,
     user: userData,
-    totalPrice: cartTotalSum,
+    totalPrice: cartTotal,
   };
 
   const {
@@ -54,35 +57,22 @@ const Checkout = () => {
   if (!cart.length) return <p>no products</p>;
   return (
     <Container>
-      <Row className="cart bar">
-        <Col sm={6}>
-          <span>Products</span>
-        </Col>
-        <Col sm={2}>
-          <span>Price</span>
-        </Col>
-        <Col sm={2}>
-          <span>Amount</span>
-        </Col>
-        <Col sm={2}>
-          <span>Total price</span>
-        </Col>
-      </Row>
+      <ProductBar />
       {cart.map((product) => (
         <div className={styles.product_box} key={product.id}>
           <Container>
             <Row>
-              <Col sm={6}>
+              <Col sm={6} className="p-0">
                 <span>{product.name}</span>
               </Col>
-              <Col sm={2}>
+              <Col sm={2} className="p-0">
                 <span>{product.price}</span>
               </Col>
-              <Col sm={2}>
+              <Col sm={2} className="p-0">
                 <span>{product.count}</span>
               </Col>
-              <Col sm={2}>
-                <span>{product.price * product.count}</span>
+              <Col sm={2} className="px-1 ">
+                <span>$ {product.price * product.count}</span>
               </Col>
             </Row>
             <Row>
@@ -95,7 +85,7 @@ const Checkout = () => {
       ))}
       <Col sm={6}>
         {' '}
-        <span>{cartTotalSum}</span>
+        <span>$ {cartTotal}</span>
       </Col>
       <Form onSubmit={validate(handleSubmit)}>
         <Form.Group controlId="formFirstName">

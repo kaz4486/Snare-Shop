@@ -1,0 +1,11 @@
+@import '../../../styles/settings.scss';
+
+.bar {
+  margin-top: 24px;
+  border-top: solid 3px $color-orange;
+  padding-top: 5px;
+  font-size: 20px;
+  .col {
+    padding: 0;
+  }
+}

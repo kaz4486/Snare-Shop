@@ -1,13 +1,10 @@
 @import '../../../styles/settings.scss';
 
-.photo_thumbnail {
-  object-fit: cover;
-  max-width: 280px;
-  max-height: 200px;
-
-  -webkit-box-shadow: -3px 7px 13px -37px rgb(72, 75, 110);
-  -moz-box-shadow: -3px 7px 13px -37px rgba(66, 68, 90, 1);
-  box-shadow: -3px 7px 13px -37px rgba(66, 68, 90, 1);
+.price {
+  font-size: 24px;
+  display: flex;
+  justify-self: center;
+  margin-right: 18px;
 }
 
 .cart_div {
@@ -19,9 +16,55 @@
 
 .cart_button {
   border-radius: 10%;
+  background-color: $color-main-navy-blue;
+  min-width: 60px;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover,
+  &:focus {
+    background-color: $color-main-navy-blue;
+    color: $color-orange;
+  }
+  .cart_icon {
+    min-width: 20px;
+    min-height: 20px;
+    top: 45%;
+    left: 45%;
+  }
 }
 
-.cart_icon {
-  top: 45%;
-  left: 45%;
+.gallery {
+  margin-top: 24px;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border-top: 4px solid $color-second-navy-blue;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    border: -4px;
+    left: 0;
+    width: 100%;
+    border-top: 4px solid $color-second-navy-blue;
+  }
+
+  .photo_thumbnail {
+    display: flex;
+    img {
+      object-fit: cover;
+      max-width: 280px;
+      max-height: 200px;
+      margin: 0 auto;
+
+      -webkit-box-shadow: -3px 7px 13px -37px rgb(72, 75, 110);
+      -moz-box-shadow: -3px 7px 13px -37px rgba(66, 68, 90, 1);
+      box-shadow: -3px 7px 13px -37px rgba(66, 68, 90, 1);
+    }
+  }
 }

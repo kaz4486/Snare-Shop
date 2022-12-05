@@ -1,21 +1,21 @@
 @import '../../../styles/settings.scss';
 
 .button {
-  border-color: #1e81b0;
+  border-color: $color-second-navy-blue;
   border: solid 0.01px;
   border-radius: 3px;
-  background-color: #1e81b0;
+  background-color: $color-second-navy-blue;
   padding: 5px 10px 5px 10px;
   font-size: 18;
-  transition: width 0.5s ease-in;
-  width: 120px;
+  transition: min-width 0.5s ease-in;
+  min-width: 120px;
   margin: 5px 0 10px 0;
-  color: white;
+  color: $color-white;
 
   &:hover {
-    background-color: #154c79;
-    color: #eab676;
-    width: 140px;
-    border-color: #1e81b0;
+    background-color: $color-main-navy-blue;
+    color: $color-orange;
+    min-width: 150px;
+    border-color: $color-second-navy-blue;
   }
 }

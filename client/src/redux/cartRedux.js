@@ -73,7 +73,7 @@ const cartReducer = (statePart = initialState, action = {}) => {
         product.id === action.payload.id
           ? {
               ...product,
-              amount: action.payload.amount,
+              count: action.payload.count,
               totalPrice: action.payload.totalPrice,
             }
           : product,

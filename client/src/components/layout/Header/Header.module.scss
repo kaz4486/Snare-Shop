@@ -1,0 +1,30 @@
+@import '../../../styles/settings.scss';
+
+.navbar {
+  background-color: $color-main-navy-blue;
+  font-size: 500;
+  color: $color-orange;
+  .navbar_brand {
+    img {
+      padding-right: 5px;
+    }
+    &:hover {
+      color: $color-orange;
+      img {
+        transform: scale(120%);
+        margin-right: 5px;
+      }
+    }
+  }
+  .nav {
+    padding: 10px;
+
+    .link {
+      color: $color-white;
+      font-size: 18px;
+      &:hover {
+        color: $color-orange;
+      }
+    }
+  }
+}

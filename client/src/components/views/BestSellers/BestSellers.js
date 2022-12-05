@@ -4,8 +4,8 @@ import styles from './BestSellers.module.scss';
 
 const BestSellers = () => {
   return (
-    <Container>
-      <h2 className={styles.title}>Best sellers</h2>
+    <Container className={styles.container}>
+      <h2 className={styles.heading}>Best sellers</h2>
       <Products />
     </Container>
   );

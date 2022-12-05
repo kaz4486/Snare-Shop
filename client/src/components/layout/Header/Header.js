@@ -1,18 +1,24 @@
+import clsx from 'clsx';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import styles from './Header.module.scss';
 
 const Header = () => {
   return (
-    <Navbar bg="light" expand="lg" variant="light">
+    <Navbar expand="lg" className={styles.navbar}>
       <Container>
-        <Navbar.Brand as={NavLink} to="/">
+        <Navbar.Brand as={NavLink} to="/" className={styles.navbar_brand}>
+          <img
+            src={`${process.env.PUBLIC_URL}/images/brandLogo.png`}
+            alt="brand logo"
+          />
           SnareShop
         </Navbar.Brand>
-        <Nav className="d-flex justify-conent-end">
-          <Nav.Link as={NavLink} to="/">
+        <Nav className={styles.nav}>
+          <Nav.Link as={NavLink} to="/" className={clsx(styles.link, 'mx-5')}>
             Home
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/cart">
+          <Nav.Link as={NavLink} to="/cart" className={styles.link}>
             Cart
           </Nav.Link>
         </Nav>

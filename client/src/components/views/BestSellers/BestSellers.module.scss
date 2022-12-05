@@ -1,6 +1,20 @@
 @import '../../../styles/settings.scss';
 
-.title {
-  text-transform: uppercase;
-  color: #eab676;
+.container {
+  margin-top: 36px;
+  .heading {
+    text-transform: uppercase;
+    color: $color-main-navy-blue;
+    position: relative;
+    margin-bottom: 24px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      border-bottom: 4px solid $color-second-navy-blue;
+    }
+  }
 }

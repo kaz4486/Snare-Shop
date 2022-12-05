@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import styles from '../CartBox/CartBox.module.scss';
 import AmountWidget from '../../features/AmountWidget/AmountWidget';
 import { useEffect, useState } from 'react';
@@ -9,6 +9,7 @@ import {
   updateProductCartAmount,
   updateProductCartComment,
 } from '../../../redux/cartRedux';
+import Button from '../../common/Button/Button';
 
 const CartBox = ({ product }) => {
   const [productAmount, setProductAmount] = useState(product.count);
@@ -48,28 +49,28 @@ const CartBox = ({ product }) => {
   };
 
   return (
-    <Container>
+    <Container className={styles.product_box}>
       <Row>
         {' '}
-        <div className={styles.product_box}>
+        <div className={styles.inner_product_box}>
           <Col sm={6}>
             <span>{product.name}</span>
           </Col>
           <Col sm={2}>
             <span>{product.price}</span>
           </Col>
-          <Col>
+          <Col sm={2} className="mx-1">
             <AmountWidget
               value={productAmount}
               handleAmountChange={handleAmountChange}
             />
           </Col>
           <Col sm={2}>
-            <span>{product.price * productAmount}</span>
+            <span>$ {product.price * productAmount}</span>
           </Col>
         </div>
       </Row>
-      <Row>
+      <Row className="d-flex align-items-center">
         <Col>
           <form>
             <input
@@ -81,7 +82,8 @@ const CartBox = ({ product }) => {
           </form>
         </Col>
         <Col key={product.name}>
-          <Button onClick={handleRemoveBox}>Remove product</Button>
+          {/* <Button onClick={handleRemoveBox}>Remove product</Button> */}
+          <Button onClick={handleRemoveBox}> Remove product</Button>
         </Col>
       </Row>
     </Container>

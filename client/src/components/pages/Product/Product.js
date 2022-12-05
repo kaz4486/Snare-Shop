@@ -24,6 +24,7 @@ const Product = () => {
   console.log(product.photos);
 
   const [productAmount, setProductAmount] = useState('1');
+  const totalPrice = product.price * productAmount;
 
   useEffect(() => {
     dispatch(loadProductsRequest());
@@ -41,9 +42,10 @@ const Product = () => {
   const handleAddToCart = (e) => {
     e.preventDefault();
     dispatch(addToCart(productPreparedToCart));
-    setTimeout(() => {
-      return navigate('/cart');
-    }, 1000);
+    // setTimeout(() => {
+    //   return navigate('/cart');
+    // }, 1000);
+    navigate('/cart');
   };
 
   if (request.pending) return <Progress animated color="primary" value={50} />;
@@ -66,23 +68,23 @@ const Product = () => {
               </Row>
               <Row className="text-center align-items-center">
                 <Col
-                  sm={6}
+                  sm={8}
                   className="d-flex justify-content-center align-items-center"
                 >
-                  <div>{product.price}</div>
-                </Col>
-                <Col
-                  sm={6}
-                  className="d-flex justify-content-start align-items-center"
-                >
+                  <div className={styles.price}>$ {totalPrice}</div>
                   <AmountWidget
                     value={productAmount}
                     setProductAmount={setProductAmount}
                   />
+                </Col>
+                <Col
+                  sm={4}
+                  className="d-flex justify-content-start align-items-center"
+                >
                   <div className={styles.cart_div}>
                     <Button
                       className={styles.cart_button}
-                      onClick={(e) => handleAddToCart(e)}
+                      onClick={handleAddToCart}
                     >
                       <FontAwesomeIcon
                         icon={faCartPlus}
@@ -103,16 +105,17 @@ const Product = () => {
             </Col>
           </Row>
         </section>
-        <section className="photo-thumbnails">
+        <section className={styles.gallery}>
           <Row>
             {' '}
             {product.photos.map((photo) => (
-              <Col sm={4} className="d-flex align-self-center" key={photo}>
-                <img
-                  src={`${process.env.PUBLIC_URL}/images/products/${photo}`}
-                  alt="product"
-                  className={styles.photo_thumbnail}
-                />
+              <Col sm={4} className=" align-self-center" key={photo}>
+                <div className={styles.photo_thumbnail}>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/images/products/${photo}`}
+                    alt="product"
+                  />
+                </div>
               </Col>
             ))}
           </Row>

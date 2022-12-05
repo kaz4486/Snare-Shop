@@ -3,6 +3,11 @@
 .product_box {
   display: flex;
   flex-direction: row;
-  background-color: rgb(179, 174, 174);
   margin: 20px 0 20px 0;
+  padding: 10px;
+  font-size: 18px;
+  background-color: $color-white;
+  span {
+    padding-right: 0;
+  }
 }

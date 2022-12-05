@@ -1,9 +1,12 @@
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getCart, getCartTotal, loadCart } from '../../../redux/cartRedux';
 import CartBox from '../../features/CartBox/CartBox';
 import { useEffect } from 'react';
+import Button from '../../common/Button/Button';
+import ProductBar from '../../common/ProductBar/ProductBar';
+import styles from './Cart.module.scss';
 
 const Cart = () => {
   const cart = useSelector(getCart);
@@ -42,33 +45,25 @@ const Cart = () => {
   if (!cart.length) return <p>no products</p>;
   return (
     <Container>
-      <Row className="cart bar">
-        <Col sm={6}>
-          <span>Products</span>
-        </Col>
-        <Col sm={2}>
-          <span>Price</span>
-        </Col>
-        <Col sm={2}>
-          <span>Amount</span>
-        </Col>
-        <Col sm={2}>
-          <span>Total price</span>
-        </Col>
-      </Row>
-      {cart.map((product) => (
-        <div key={product.id}>
-          <CartBox
-            product={product}
-            key={product.id}
-            // setProductOrder={setProductOrder}
-          />
-        </div>
-      ))}
-      <Row>
-        <span>Total price: {cartTotal}</span>
-      </Row>
-      <Button onClick={handleCheckoutClick}>checkout</Button>
+      <div className={styles.products_section}>
+        <ProductBar />
+        {cart.map((product) => (
+          <div key={product.id}>
+            <CartBox
+              product={product}
+              key={product.id}
+              // setProductOrder={setProductOrder}
+            />
+          </div>
+        ))}
+      </div>
+      <div className={styles.price_section}>
+        <Row>
+          <span>Total price: $ {cartTotal}</span>
+        </Row>
+        {/* <Button onClick={handleCheckoutClick}>checkout</Button> */}
+        <Button onClick={handleCheckoutClick}>Checkout</Button>
+      </div>
     </Container>
   );
 };

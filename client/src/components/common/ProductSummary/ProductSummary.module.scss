@@ -2,7 +2,7 @@
 
 .product {
   border: solid 1px;
-  border-color: #154c79;
+  border-color: $color-main-navy-blue;
   border-radius: 2%;
   text-align: center;
   width: 320px;
@@ -17,8 +17,8 @@
     margin-bottom: 10px;
   }
   .price {
-    background: #154c79;
-    color: white;
+    background: $color-main-navy-blue;
+    color: $color-white;
     font-size: 24px;
     margin-bottom: 5px;
   }

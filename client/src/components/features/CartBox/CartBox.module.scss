@@ -1,8 +1,17 @@
 @import '../../../styles/settings.scss';
 
 .product_box {
-  display: flex;
-  flex-direction: row;
-  background-color: rgb(179, 174, 174);
-  margin: 20px 0 20px 0;
+  background-color: $color-white;
+  .inner_product_box {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0 20px 0;
+    padding: 10px;
+    font-size: 18px;
+  }
+  input {
+    border-color: $color-main-navy-blue;
+    border: solid 0.01px;
+    border-radius: 3px;
+  }
 }
