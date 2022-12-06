@@ -26,4 +26,9 @@ export class Product {
     default: 1,
   })
   count: number;
+
+  @Column({
+    type: 'bool',
+  })
+  sale: boolean;
 }

@@ -11,6 +11,7 @@ import {
   IsDate,
 } from 'class-validator';
 import { UserAddress } from 'src/users/db/users-addresses.entity';
+import { Column } from 'typeorm';
 
 export class ExternalOrderDto {
   @IsNotEmpty()
@@ -27,7 +28,7 @@ export class ExternalOrderDto {
 
   @Min(0)
   @IsNumber()
-  price: number;
+  totalPrice: number;
 
   @IsDate()
   createdAt: Array<number>;
@@ -36,7 +37,11 @@ export class ExternalOrderDto {
 export class ExternalOrderedProductDto {
   @IsNotEmpty()
   @IsUUID()
-  orderedProductId: string;
+  id: string;
+
+  @IsNotEmpty()
+  @IsUUID()
+  orderId: string;
 
   @IsNotEmpty()
   @IsUUID()
@@ -51,9 +56,15 @@ export class ExternalOrderedProductDto {
   @IsNumber()
   price: number;
 
-  @Min(0)
+  @Min(1)
   @IsNumber()
   count: number;
+
+  @Column({
+    type: 'text',
+    nullable: true,
+  })
+  comment: string;
 }
 
 export class ExternalOrderedUserDto {
@@ -67,7 +78,13 @@ export class ExternalOrderedUserDto {
   @IsNotEmpty()
   email: string;
 
-  @ValidateNested({ each: true })
-  @Type(() => UserAddress)
-  address: Array<UserAddress>;
+  @IsNotEmpty()
+  street: string;
+
+  @IsNotEmpty()
+  @IsNumber()
+  house_number: number;
+
+  @IsNotEmpty()
+  city: string;
 }

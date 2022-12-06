@@ -19,6 +19,15 @@ export class OrdersDataService {
     private orderedProductRepository: OrderedProductRepository,
   ) {}
 
+  getAllOrders(): Promise<Order[]> {
+    return this.orderRepository.find();
+  }
+
+  getOrderById(id: string): Promise<Order> {
+    const order = this.orderRepository.findOneBy({ id });
+    return order;
+  }
+
   async saveOrderedProducts(
     productsToSave: CreateOrderedProductDto[],
   ): Promise<OrderedProduct[]> {

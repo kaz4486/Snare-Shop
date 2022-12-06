@@ -6,6 +6,7 @@ import {
   Min,
   IsNumber,
   ValidateNested,
+  IsBoolean,
 } from 'class-validator';
 import { Column } from 'typeorm';
 
