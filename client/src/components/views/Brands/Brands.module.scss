@@ -1,0 +1,14 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  margin: 60px 0;
+
+  .sliderDiv {
+    height: 110px;
+  }
+  .heading {
+    text-transform: uppercase;
+    color: $color-main-navy-blue;
+    position: relative;
+  }
+}

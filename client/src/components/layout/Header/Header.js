@@ -1,7 +1,9 @@
 import clsx from 'clsx';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar, Row, Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   return (
@@ -15,12 +17,24 @@ const Header = () => {
           SnareShop
         </Navbar.Brand>
         <Nav className={styles.nav}>
-          <Nav.Link as={NavLink} to="/" className={clsx(styles.link, 'mx-5')}>
+          <Nav.Link as={NavLink} to="/" className={clsx(styles.link, 'mx-4')}>
             Home
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/cart" className={styles.link}>
+          <Nav.Link
+            as={NavLink}
+            to="/cart"
+            className={clsx(styles.link, 'mx-4')}
+          >
             Cart
           </Nav.Link>
+          <Row className={styles.icon_div}>
+            <Col>
+              <FontAwesomeIcon icon={faPhoneAlt} className={styles.icon} />
+            </Col>
+            <Col>
+              <p className={styles.phone_number}> 258-515-978</p>
+            </Col>
+          </Row>
         </Nav>
       </Container>
     </Navbar>

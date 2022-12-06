@@ -32,7 +32,7 @@ const Products = () => {
               xs={12}
               sm={6}
               lg={4}
-              className="justify-content-center mb-2"
+              className="justify-content-center mb-2 mx-3"
             >
               <ProductSummary key={product.id} {...product} />{' '}
             </Col>

@@ -11,3 +11,27 @@
     padding-right: 0;
   }
 }
+
+.form {
+  max-width: 40%;
+  margin: 30px auto 20px auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  .title {
+    position: relative;
+    margin-bottom: 20px;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      border-bottom: 3px solid $color-orange;
+    }
+  }
+  input {
+    margin-bottom: 20px;
+  }
+}

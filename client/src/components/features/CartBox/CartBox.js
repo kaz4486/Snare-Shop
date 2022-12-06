@@ -74,6 +74,7 @@ const CartBox = ({ product }) => {
         <Col>
           <form>
             <input
+              className={styles.info_input}
               type="textarea"
               placeholder="Insert addition informations"
               value={comment}

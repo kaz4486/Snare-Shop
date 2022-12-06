@@ -1,4 +1,4 @@
-import { Button, Col, Container, Row, Form } from 'react-bootstrap';
+import { Col, Container, Row, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCart, getCartTotal, loadCart } from '../../../redux/cartRedux';
 import styles from '../Checkout/Checkout.module.scss';
@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { createOrderRequest } from '../../../redux/orderRedux';
 import { useForm } from 'react-hook-form';
 import ProductBar from '../../common/ProductBar/ProductBar';
+import Button from '../../common/Button/Button';
 
 const Checkout = () => {
   const cart = useSelector(getCart);
@@ -85,9 +86,10 @@ const Checkout = () => {
       ))}
       <Col sm={6}>
         {' '}
-        <span>$ {cartTotal}</span>
+        <h5>Total price: ${cartTotal}</h5>
       </Col>
-      <Form onSubmit={validate(handleSubmit)}>
+      <Form onSubmit={validate(handleSubmit)} className={styles.form}>
+        <h3 className={styles.title}>Order form</h3>
         <Form.Group controlId="formFirstName">
           <Form.Label>First name</Form.Label>
           <Form.Control
@@ -207,15 +209,19 @@ const Checkout = () => {
             </small>
           )}
         </Form.Group>
-        <Row>
-          <Col sm={6}>
-            <Button type="submit">Order</Button>
-          </Col>
-          <Col sm={6}></Col>
-        </Row>
-        <Link to="/cart">
-          <Button>Back to cart</Button>
-        </Link>
+        <div className="my-3 mx-2">
+          <Row>
+            <Col sm={6}>
+              {/* <Button type="submit">Order</Button> */}
+              <Button type="submit">Order</Button>
+            </Col>
+            <Col sm={6}></Col>
+          </Row>
+          <Link to="/cart">
+            {/* <Button>Back to cart</Button> */}
+            <Button>Back to cart</Button>
+          </Link>
+        </div>
       </Form>
     </Container>
   );

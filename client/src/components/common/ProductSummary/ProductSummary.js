@@ -1,10 +1,11 @@
-import { Card } from 'react-bootstrap';
+import { Card, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styles from './ProductSummary.module.scss';
 import clsx from 'clsx';
 import Button from '../Button/Button';
+import { useState } from 'react';
 
-const ProductSummary = ({ id, name, mainPhoto, price }) => {
+const ProductSummary = ({ id, name, mainPhoto, price, sale }) => {
   return (
     <div key={id} className={clsx(styles.product, 'align-items-center')}>
       <img
@@ -13,8 +14,19 @@ const ProductSummary = ({ id, name, mainPhoto, price }) => {
         src={`${process.env.PUBLIC_URL}/images/products/${mainPhoto}`}
         alt="Product"
       />
+      {sale && (
+        <div className={styles.sale}>
+          <p>Sale</p>
+        </div>
+      )}
       <h3 className={styles.title}>{name}</h3>
-      <p className={styles.price}>$ {price}</p>
+      {sale && (
+        <p className={styles.price}>
+          <strike className={styles.price}>$ {price}</strike> $ {0.8 * price}
+        </p>
+      )}
+      {!sale && <p className={styles.price}>$ {price}</p>}
+
       <Link to={'/products/' + id}>
         <Button>View details</Button>
         {/* <Button className="mb-2">View details</Button> */}

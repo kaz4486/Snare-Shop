@@ -2,9 +2,18 @@
 
 .bar {
   margin-top: 24px;
-  border-top: solid 3px $color-orange;
+  margin-bottom: 24px;
   padding-top: 5px;
   font-size: 20px;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    border-bottom: 3px solid $color-orange;
+  }
   .col {
     padding: 0;
   }

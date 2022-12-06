@@ -4,6 +4,7 @@
   background-color: $color-main-navy-blue;
   font-size: 500;
   color: $color-orange;
+
   .navbar_brand {
     img {
       padding-right: 5px;
@@ -18,12 +19,33 @@
   }
   .nav {
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
 
     .link {
       color: $color-white;
       font-size: 18px;
       &:hover {
         color: $color-orange;
+      }
+    }
+    .icon_div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 20px;
+
+      .icon {
+        min-width: 20px;
+        min-height: 20px;
+        top: 45%;
+        left: 45%;
+      }
+      .phone_number {
+        min-width: 125px;
+        margin-bottom: 0;
       }
     }
   }

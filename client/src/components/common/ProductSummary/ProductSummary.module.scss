@@ -6,6 +6,7 @@
   border-radius: 2%;
   text-align: center;
   width: 320px;
+  position: relative;
 
   .photo {
     width: 300px;
@@ -21,5 +22,21 @@
     color: $color-white;
     font-size: 24px;
     margin-bottom: 5px;
+    strike {
+      font-size: 20px;
+    }
+  }
+
+  .sale {
+    position: absolute;
+    top: 153px;
+    left: 81%;
+    transform: translateX(-51%);
+    background-color: $color-orange;
+    border-radius: 49%;
+    color: $color-main-navy-blue;
+    padding: 30px 15px 5px 15px;
+    width: 70px;
+    font-size: 20px;
   }
 }

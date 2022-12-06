@@ -10,6 +10,10 @@ export const getProductById = ({ products }, id) => {
   return products.data.find((product) => product.id === id);
 };
 
+export const getProductForSale = ({ products }) => {
+  return products.data.filter((product) => product.sale);
+};
+
 // actions
 
 const reducerName = 'products';
