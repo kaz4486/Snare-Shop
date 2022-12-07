@@ -5,16 +5,16 @@ const ProductBar = () => {
   return (
     <Container>
       <Row className={styles.bar}>
-        <Col sm={6} className={styles.col}>
+        <Col xs={6} sm={6} className={styles.col}>
           <span>Products</span>
         </Col>
-        <Col sm={2} className={styles.col}>
+        <Col xs={2} sm={2} className={styles.col}>
           <span>Price</span>
         </Col>
-        <Col sm={2} className={styles.col}>
+        <Col xs={2} sm={2} className={styles.col}>
           <span>Amount</span>
         </Col>
-        <Col sm={2} className={styles.col}>
+        <Col xs={2} sm={2} className={styles.col}>
           <span>Product price</span>
         </Col>
       </Row>

@@ -18,3 +18,9 @@
     padding: 0;
   }
 }
+
+@media (max-width: 580px) {
+  .bar {
+    font-size: 16px;
+  }
+}

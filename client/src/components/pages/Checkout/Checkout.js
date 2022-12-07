@@ -76,16 +76,16 @@ const Checkout = () => {
         <div className={styles.product_box} key={product.id}>
           <Container>
             <Row>
-              <Col sm={6} className="p-0">
+              <Col xs={6} className="p-0">
                 <span>{product.name}</span>
               </Col>
-              <Col sm={2} className="p-0">
+              <Col xs={2} className="p-0">
                 <span>{product.price}</span>
               </Col>
-              <Col sm={2} className="p-0">
+              <Col xs={2} className="p-0">
                 <span>{product.count}</span>
               </Col>
-              <Col sm={2} className="px-1 ">
+              <Col xs={2} className="px-1">
                 <span>$ {product.price * product.count}</span>
               </Col>
             </Row>

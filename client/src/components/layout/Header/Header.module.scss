@@ -21,7 +21,6 @@
     padding: 10px;
     display: flex;
     justify-content: center;
-    align-items: center;
     margin-right: 10px;
 
     .link {
@@ -48,5 +47,11 @@
         margin-bottom: 0;
       }
     }
+  }
+}
+
+@media (max-width: 980px) {
+  .nav {
+    align-items: end;
   }
 }

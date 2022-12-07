@@ -68,7 +68,7 @@ const Product = () => {
         <section className="main-section">
           <Row>
             {' '}
-            <Col sm={6}>
+            <Col sm={12} lg={6}>
               <Row>
                 <img
                   src={`${process.env.PUBLIC_URL}/images/products/${product.mainPhoto}`}
@@ -77,7 +77,8 @@ const Product = () => {
               </Row>
               <Row className="text-center align-items-center">
                 <Col
-                  sm={8}
+                  sm={12}
+                  md={8}
                   className="d-flex justify-content-center align-items-center"
                 >
                   <div className={styles.price}>$ {totalPrice}</div>
@@ -87,7 +88,8 @@ const Product = () => {
                   />
                 </Col>
                 <Col
-                  sm={4}
+                  sm={12}
+                  md={4}
                   className="d-flex justify-content-start align-items-center"
                 >
                   <div className={styles.cart_div}>
@@ -104,7 +106,7 @@ const Product = () => {
                 </Col>
               </Row>
             </Col>
-            <Col sm={6} className="align-self-center mt-5">
+            <Col sm={12} lg={6} className="align-self-center mt-5">
               <Row className="mb-2">
                 <h1>{product.name}</h1>
               </Row>
@@ -118,7 +120,7 @@ const Product = () => {
           <Row>
             {' '}
             {product.photos.map((photo) => (
-              <Col sm={4} className=" align-self-center" key={photo}>
+              <Col sm={12} md={4} className=" align-self-center" key={photo}>
                 <div className={styles.photo_thumbnail}>
                   <img
                     src={`${process.env.PUBLIC_URL}/images/products/${photo}`}

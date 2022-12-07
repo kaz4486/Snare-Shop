@@ -53,19 +53,19 @@ const CartBox = ({ product }) => {
       <Row>
         {' '}
         <div className={styles.inner_product_box}>
-          <Col sm={6}>
+          <Col xs={6}>
             <span>{product.name}</span>
           </Col>
-          <Col sm={2}>
+          <Col xs={2}>
             <span>{product.price}</span>
           </Col>
-          <Col sm={2} className="mx-1">
+          <Col xs={2} className="mx-1">
             <AmountWidget
               value={productAmount}
               handleAmountChange={handleAmountChange}
             />
           </Col>
-          <Col sm={2}>
+          <Col xs={2}>
             <span>$ {product.price * productAmount}</span>
           </Col>
         </div>
