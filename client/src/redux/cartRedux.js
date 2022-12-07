@@ -46,9 +46,26 @@ export const updateProductCartComment = (payload) => ({
 });
 export const clearCart = () => ({ type: CLEAR_CART });
 
+const initialState = [];
+
 // thunks
 
-const initialState = [];
+// export const addToCartRequest = (data) => {
+//   return async (dispatch) => {
+//     dispatch(addToCart(data));
+//     try {
+//       initialState = localStorage.getItem('cart')
+//         ? [JSON.parse(localStorage.getItem('cart'))]
+//         : [];
+//     } catch (e) {
+//       console.log('getError', e.message);
+//     }
+//     localStorage.setItem('cart', JSON.stringify(initialState));
+//     const cartProducts = JSON.parse(localStorage.getItem('cart'));
+
+//     console.log(cartProducts);
+//   };
+// };
 
 //reducer
 
@@ -94,36 +111,3 @@ const cartReducer = (statePart = initialState, action = {}) => {
 };
 
 export default cartReducer;
-
-// export default function cartReducer(statePart = initialState, action = {}) {
-//   switch (action.type) {
-//     case LOAD_CART:
-//       return { ...statePart, data: [...action.payload] };
-//     case ADD_TO_CART:
-//       return { ...statePart, data: [...statePart.data, action.payload] };
-//     case REMOVE_FROM_CART:
-//       return {
-//         ...statePart,
-//         data: [
-//           statePart.data.filter((product) => product.id !== action.payload),
-//         ],
-//       };
-//     case START_REQUEST:
-//       return {
-//         ...statePart,
-//         request: { pending: true, error: null, success: false },
-//       };
-//     case END_REQUEST:
-//       return {
-//         ...statePart,
-//         request: { pending: false, error: null, success: true },
-//       };
-//     case ERROR_REQUEST:
-//       return {
-//         ...statePart,
-//         request: { pending: false, error: action.error, success: false },
-//       };
-//     default:
-//       return statePart;
-//   }
-// }

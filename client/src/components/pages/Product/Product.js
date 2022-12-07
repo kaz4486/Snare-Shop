@@ -22,7 +22,6 @@ const Product = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('jest');
     dispatch(loadProductsRequest());
   }, [dispatch]);
 
