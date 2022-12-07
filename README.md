@@ -1,5 +1,12 @@
+# Snare Shop App
+
+E-commerce website for drums shop.\
+Technologies: JavaScript, React, Redux, Node.js, Nest.js, TypeOrm, MySQL.
+
+[See on Replit](https://drumshop.kaz4486.repl.co)
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>w
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
