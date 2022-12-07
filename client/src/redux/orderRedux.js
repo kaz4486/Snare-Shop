@@ -25,7 +25,9 @@ export const createOrderRequest = (data) => {
     dispatch(startRequest({ name: CREATE_ORDER }));
     try {
       let res = await axios.post(`${API_URL}/orders`, data);
+      console.log(res.data);
       dispatch(createOrder(res.data));
+
       dispatch(endRequest({ name: CREATE_ORDER }));
     } catch (e) {
       dispatch(errorRequest({ name: CREATE_ORDER, error: e.message }));

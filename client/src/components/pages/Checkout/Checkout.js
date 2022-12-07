@@ -1,10 +1,10 @@
-import { Col, Container, Row, Form } from 'react-bootstrap';
+import { Col, Container, Row, Form, Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCart, getCartTotal, loadCart } from '../../../redux/cartRedux';
 import styles from '../Checkout/Checkout.module.scss';
 import { useState, useEffect } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { createOrderRequest } from '../../../redux/orderRedux';
 import { useForm } from 'react-hook-form';
 import ProductBar from '../../common/ProductBar/ProductBar';
@@ -14,7 +14,10 @@ const Checkout = () => {
   const cart = useSelector(getCart);
   const cartTotal = useSelector(getCartTotal);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [showModal, setShowModal] = useState(false);
 
   const [userData, setUserData] = useState({
     firstName: '',
@@ -39,6 +42,12 @@ const Checkout = () => {
 
   const handleSubmit = () => {
     dispatch(createOrderRequest(order));
+    setShowModal(true);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+    navigate('/');
   };
 
   //imie, nazwisko, email, ulica, numer, miasto,
@@ -221,6 +230,18 @@ const Checkout = () => {
           </Link>
         </div>
       </Form>
+
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>You ordered successfully!</Modal.Title>
+        </Modal.Header>
+        <Modal.Footer>
+          {/* <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button> */}
+          <Button onClick={handleClose}>Great!</Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 };

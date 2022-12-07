@@ -7,10 +7,7 @@ import { useState } from 'react';
 
 const ProductSummary = ({ id, name, mainPhoto, price, sale }) => {
   return (
-    <div
-      key={id}
-      className={clsx(styles.product, 'align-items-center mx-0 mb-3')}
-    >
+    <div key={id} className={clsx(styles.product, ' mx-0 mb-3')}>
       <img
         className={styles.photo}
         variant="top"
