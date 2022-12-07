@@ -38,7 +38,7 @@ const Products = () => {
           </Col>
         ))} */}
 
-        {arrayChunk(products, 3).map((row, i) => (
+        {arrayChunk(products, products.length).map((row, i) => (
           <div key={i} className="row mx-auto">
             {row.map((col, i) => (
               <div

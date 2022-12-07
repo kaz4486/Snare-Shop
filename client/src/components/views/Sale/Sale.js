@@ -11,7 +11,7 @@ const Sale = () => {
   return (
     <Container className={styles.container}>
       <h2 className={styles.heading}>Sales</h2>
-      {arrayChunk(saleProducts, 3).map((row, i) => (
+      {arrayChunk(saleProducts, saleProducts.length).map((row, i) => (
         <div key={i} className="row mx-auto">
           {row.map((col, i) => (
             <div
