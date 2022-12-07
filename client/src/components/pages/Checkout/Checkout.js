@@ -14,8 +14,6 @@ const Checkout = () => {
   const cart = useSelector(getCart);
   const cartTotal = useSelector(getCartTotal);
 
-  console.log(cart);
-
   const dispatch = useDispatch();
 
   const [userData, setUserData] = useState({

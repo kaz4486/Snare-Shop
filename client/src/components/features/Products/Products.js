@@ -8,6 +8,7 @@ import { Alert, Progress } from 'reactstrap';
 import { useEffect } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import ProductSummary from '../../common/ProductSummary/ProductSummary';
+import arrayChunk from '../../../utils/arrayChunk';
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -25,19 +26,30 @@ const Products = () => {
   if (request.success)
     return (
       <Container>
-        <Row>
-          {products.map((product) => (
-            <Col
-              key={product.id}
-              xs={12}
-              sm={6}
-              lg={4}
-              className="justify-content-center mb-2 mx-3"
-            >
-              <ProductSummary key={product.id} {...product} />{' '}
-            </Col>
-          ))}
-        </Row>
+        {/* {products.map((product) => (
+          <Col
+            key={product.id}
+            xs={12}
+            sm={6}
+            lg={4}
+            className="justify-content-center mb-2 mx-1"
+          >
+            <ProductSummary key={product.id} {...product} />{' '}
+          </Col>
+        ))} */}
+
+        {arrayChunk(products, 3).map((row, i) => (
+          <div key={i} className="row mx-auto">
+            {row.map((col, i) => (
+              <div
+                className="col-sm-12 col-md-6 col-xl-4 mb-2 d-flex justify-content-center"
+                key={col.id}
+              >
+                <ProductSummary key={i} {...col} />
+              </div>
+            ))}
+          </div>
+        ))}
       </Container>
     );
 };

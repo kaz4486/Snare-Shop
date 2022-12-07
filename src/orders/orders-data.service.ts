@@ -32,45 +32,38 @@ export class OrdersDataService {
     productsToSave: CreateOrderedProductDto[],
   ): Promise<OrderedProduct[]> {
     const orderedProducts: OrderedProduct[] = [];
-    console.log('productsToSave', productsToSave);
-
-    for (let i = 0; i < productsToSave.length; i++) {
+    productsToSave.map(async (product) => {
       const orderedProduct = new OrderedProduct();
-      console.log(productsToSave[i].id);
-      const productFromDB = await this.productRepository.findOneBy({
-        id: productsToSave[i].id,
-      });
 
-      console.log(productFromDB);
+      const productFromDB = await this.productRepository.findOneBy({
+        id: product.id,
+      });
 
       orderedProduct.product = new Product();
       orderedProduct.product.id = productFromDB.id;
 
       orderedProduct.product.name = productFromDB.name;
-      orderedProduct.count = productsToSave[i].count;
+      orderedProduct.count = product.count;
 
       orderedProduct.price = productFromDB.price;
 
-      orderedProduct.comment = productsToSave[i].comment;
+      orderedProduct.comment = product.comment;
       //   productsToSave.forEach((product) => {
       //     orderedProduct.comment = product.comment;
       //   });
-
       await this.orderedProductRepository.save(orderedProduct);
       orderedProducts.push(orderedProduct);
+    });
 
-      return orderedProducts;
-    }
+    return orderedProducts;
   }
 
   async addOrder(order: CreateOrderDto): Promise<Order> {
-    console.log('order', order);
     const orderToSave = new Order();
 
     orderToSave.orderedProducts = await this.saveOrderedProducts(
       order.products,
     );
-    console.log(orderToSave.orderedProducts);
     orderToSave.user = new User();
     orderToSave.user.firstName = order.user.firstName;
     orderToSave.user.lastName = order.user.lastName;
@@ -79,17 +72,17 @@ export class OrdersDataService {
     orderToSave.user.house_number = order.user.house_number;
     orderToSave.user.street = order.user.street;
     orderToSave.createdAt = new Date();
-    orderToSave.totalPrice = 0;
+    orderToSave.totalPrice = order.totalPrice;
 
-    let productPrice = 0;
-    orderToSave.orderedProducts.forEach((product) => {
-      productPrice += product.price * product.count;
-    });
+    // let productPrice = 0;
+    // orderToSave.orderedProducts.forEach((product) => {
+    //   productPrice += product.price * product.count;
+    // });
 
-    order.products.forEach((product) => {
-      const productAmount = product.count;
-      orderToSave.totalPrice += productPrice * productAmount;
-    });
+    // order.products.forEach((product) => {
+    //   const productAmount = product.count;
+    //   orderToSave.totalPrice += productPrice * productAmount;
+    // });
 
     return await this.orderRepository.save(orderToSave);
   }

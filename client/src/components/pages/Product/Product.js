@@ -21,23 +21,33 @@ const Product = () => {
   const request = useSelector(getRequest);
   const navigate = useNavigate();
 
-  console.log(product.photos);
-
-  const [productAmount, setProductAmount] = useState('1');
-  const totalPrice = product.price * productAmount;
-
   useEffect(() => {
+    console.log('jest');
     dispatch(loadProductsRequest());
   }, [dispatch]);
 
-  const productPreparedToCart = {
-    name: product.name,
-    price: product.price,
-    count: parseInt(productAmount),
-    totalPrice: product.price * parseInt(productAmount),
-    comment: '',
-    id: product.id,
-  };
+  const [productAmount, setProductAmount] = useState('1');
+
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    if (product) {
+      setTotalPrice(product.price * productAmount);
+    }
+  }, [product, productAmount]);
+
+  let productPreparedToCart = null;
+
+  if (product) {
+    productPreparedToCart = {
+      name: product.name,
+      price: product.price,
+      count: parseInt(productAmount),
+      totalPrice: product.price * parseInt(productAmount),
+      comment: '',
+      id: product.id,
+    };
+  }
 
   const handleAddToCart = (e) => {
     e.preventDefault();
@@ -55,7 +65,7 @@ const Product = () => {
   if (!product) return <Navigate to="/" />;
   if (request.success)
     return (
-      <Container>
+      <Container className="mt-4">
         <section className="main-section">
           <Row>
             {' '}
@@ -95,8 +105,8 @@ const Product = () => {
                 </Col>
               </Row>
             </Col>
-            <Col sm={6} className="align-self-center">
-              <Row>
+            <Col sm={6} className="align-self-center mt-5">
+              <Row className="mb-2">
                 <h1>{product.name}</h1>
               </Row>
               <Row>

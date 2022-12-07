@@ -13,8 +13,6 @@ const Cart = () => {
   const cartTotal = useSelector(getCartTotal);
   const dispatch = useDispatch();
 
-  console.log(cart);
-
   // const cartProducts = JSON.parse(localStorage.getItem('cart'));
   // console.log(cartProducts);
 

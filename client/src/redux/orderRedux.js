@@ -21,12 +21,10 @@ export const createOrder = (payload) => ({ payload, type: CREATE_ORDER });
 //thunks
 
 export const createOrderRequest = (data) => {
-  console.log(data);
   return async (dispatch) => {
     dispatch(startRequest({ name: CREATE_ORDER }));
     try {
       let res = await axios.post(`${API_URL}/orders`, data);
-      console.log(res.data);
       dispatch(createOrder(res.data));
       dispatch(endRequest({ name: CREATE_ORDER }));
     } catch (e) {

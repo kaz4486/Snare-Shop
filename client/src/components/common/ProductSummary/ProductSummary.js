@@ -7,7 +7,10 @@ import { useState } from 'react';
 
 const ProductSummary = ({ id, name, mainPhoto, price, sale }) => {
   return (
-    <div key={id} className={clsx(styles.product, 'align-items-center')}>
+    <div
+      key={id}
+      className={clsx(styles.product, 'align-items-center mx-0 mb-3')}
+    >
       <img
         className={styles.photo}
         variant="top"
@@ -22,7 +25,8 @@ const ProductSummary = ({ id, name, mainPhoto, price, sale }) => {
       <h3 className={styles.title}>{name}</h3>
       {sale && (
         <p className={styles.price}>
-          <strike className={styles.price}>$ {price}</strike> $ {0.8 * price}
+          <strike className={styles.price}>$ {price}</strike> ${' '}
+          {(0.8 * price).toFixed(2)}
         </p>
       )}
       {!sale && <p className={styles.price}>$ {price}</p>}
