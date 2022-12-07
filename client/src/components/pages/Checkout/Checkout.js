@@ -1,6 +1,11 @@
 import { Col, Container, Row, Form, Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCart, getCartTotal, loadCart } from '../../../redux/cartRedux';
+import {
+  clearCart,
+  getCart,
+  getCartTotal,
+  loadCart,
+} from '../../../redux/cartRedux';
 import styles from '../Checkout/Checkout.module.scss';
 import { useState, useEffect } from 'react';
 
@@ -47,6 +52,7 @@ const Checkout = () => {
 
   const handleClose = () => {
     setShowModal(false);
+    dispatch(clearCart());
     navigate('/');
   };
 

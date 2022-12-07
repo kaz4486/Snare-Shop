@@ -28,6 +28,7 @@ const UPDATE_PRODUCT_CART_AMOUNT = createActionName(
 const UPDATE_PRODUCT_CART_COMMENT = createActionName(
   'UPDATE_PRODUCT_CART_COMMENT',
 );
+const CLEAR_CART = createActionName('CLEAR_CART');
 
 export const addToCart = (payload) => ({ type: ADD_TO_CART, payload });
 export const removeFromCart = (payload) => ({
@@ -43,6 +44,7 @@ export const updateProductCartComment = (payload) => ({
   type: UPDATE_PRODUCT_CART_COMMENT,
   payload,
 });
+export const clearCart = () => ({ type: CLEAR_CART });
 
 // thunks
 
@@ -84,6 +86,8 @@ const cartReducer = (statePart = initialState, action = {}) => {
           ? { ...product, comment: action.payload.comment }
           : product,
       );
+    case CLEAR_CART:
+      return (statePart = []);
     default:
       return statePart;
   }
