@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import './BrandsSlider.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Container } from 'react-bootstrap';
 
 const Brands = () => {
   const brands = useSelector(getBrands);
@@ -49,25 +50,27 @@ const Brands = () => {
   };
 
   return (
-    <div className={styles.root}>
-      <h2 className={styles.heading}>Our brands</h2>
-      <div className="container brandsSlider">
-        <Slider {...settings}>
-          {brands.map((brand) => (
-            <div
-              key={brand.id.replace('brand-', '')}
-              className={styles.sliderDiv}
-            >
-              <img
+    <Container>
+      <div className={styles.root}>
+        <h2 className={styles.heading}>Our brands</h2>
+        <div className="container brandsSlider">
+          <Slider {...settings}>
+            {brands.map((brand) => (
+              <div
                 key={brand.id.replace('brand-', '')}
-                src={`${process.env.PUBLIC_URL}/images/brands/${brand.id}.jpg`}
-                alt="brand"
-              />
-            </div>
-          ))}
-        </Slider>
+                className={styles.sliderDiv}
+              >
+                <img
+                  key={brand.id.replace('brand-', '')}
+                  src={`${process.env.PUBLIC_URL}/images/brands/${brand.id}.jpg`}
+                  alt="brand"
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

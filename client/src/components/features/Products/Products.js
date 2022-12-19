@@ -6,7 +6,7 @@ import {
 } from '../../../redux/productsRedux';
 import { Alert, Progress } from 'reactstrap';
 import { useEffect } from 'react';
-import { Container, Col, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import ProductSummary from '../../common/ProductSummary/ProductSummary';
 import arrayChunk from '../../../utils/arrayChunk';
 

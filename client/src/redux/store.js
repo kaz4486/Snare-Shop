@@ -5,6 +5,9 @@ import thunk from 'redux-thunk';
 import ordersReducer from './orderRedux';
 import brandsReducer from './brandRedux';
 
+import storage from 'redux-persist/lib/storage';
+import { persistReducer, persistStore } from 'redux-persist';
+
 const subreducers = {
   products: productsReducer,
   cart: cartReducer,
@@ -12,10 +15,17 @@ const subreducers = {
   brands: brandsReducer,
 };
 
-const reducer = combineReducers(subreducers);
+const persistConfig = {
+  key: 'cartPersist',
+  storage,
+};
 
-const store = createStore(
-  reducer,
+const rootReducer = combineReducers(subreducers);
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = createStore(
+  persistedReducer,
   compose(
     applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ &&
@@ -23,4 +33,4 @@ const store = createStore(
   ),
 );
 
-export default store;
+export const persistor = persistStore(store);

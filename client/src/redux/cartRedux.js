@@ -1,5 +1,3 @@
-import uuid4 from 'uuid4';
-
 //selectors
 
 export const getCart = ({ cart }) => cart;
@@ -48,22 +46,36 @@ export const clearCart = () => ({ type: CLEAR_CART });
 
 const initialState = [];
 
+// let initialState = [];
+
 // thunks
 
 // export const addToCartRequest = (data) => {
 //   return async (dispatch) => {
 //     dispatch(addToCart(data));
 //     try {
-//       initialState = localStorage.getItem('cart')
-//         ? [JSON.parse(localStorage.getItem('cart'))]
+//       initialState = localStorage.getItem('cartPersist')
+//         ? [JSON.parse(localStorage.getItem('cartPersist'))]
 //         : [];
 //     } catch (e) {
 //       console.log('getError', e.message);
 //     }
-//     localStorage.setItem('cart', JSON.stringify(initialState));
-//     const cartProducts = JSON.parse(localStorage.getItem('cart'));
+//     localStorage.setItem('cartPersist', JSON.stringify(initialState));
+//     const cartProducts = JSON.parse(localStorage.getItem('cartPersist'));
 
 //     console.log(cartProducts);
+//   };
+// };
+
+// export const addToCartRequest = (data) => {
+//   return async (dispatch) => {
+//     await dispatch(addToCart(data));
+
+//     localStorage.setItem('cartPersist', JSON.stringify(initialState));
+//     // localStorage.setItem('cart', JSON.stringify(initialState));
+//     // const cartProducts = JSON.parse(localStorage.getItem('cart'));
+
+//     // console.log(cartProducts);
 //   };
 // };
 
@@ -72,6 +84,7 @@ const initialState = [];
 const cartReducer = (statePart = initialState, action = {}) => {
   switch (action.type) {
     case ADD_TO_CART:
+      console.log(statePart);
       const existingProduct = statePart.find(
         (product) => product.id === action.payload.id,
       );
@@ -83,6 +96,7 @@ const cartReducer = (statePart = initialState, action = {}) => {
       } else {
       }
       return [...statePart, { ...action.payload }];
+    // localStorage.setItem('cartItems', JSON.stringify);
     case REMOVE_FROM_CART:
       return statePart.filter((product) => product.id !== action.payload);
     case LOAD_CART:
