@@ -15,4 +15,10 @@ export class ProductsController {
   ): Promise<Product> {
     return await this.productService.getProductById(id);
   }
+  @Get()
+  async getProductsByName(
+    @Param('searchPhrase') searchPhrase: string,
+  ): Promise<Product[]> {
+    return await this.productService.getProductsByName(searchPhrase);
+  }
 }

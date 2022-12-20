@@ -25,6 +25,9 @@ let ProductsController = class ProductsController {
     async getProductById(id) {
         return await this.productService.getProductById(id);
     }
+    async getProductsByName(searchPhrase) {
+        return await this.productService.getProductsByName(searchPhrase);
+    }
 };
 __decorate([
     (0, common_1.Get)(),
@@ -39,6 +42,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "getProductById", null);
+__decorate([
+    (0, common_1.Get)(),
+    __param(0, (0, common_1.Param)('searchPhrase')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], ProductsController.prototype, "getProductsByName", null);
 ProductsController = __decorate([
     (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [products_data_service_1.ProductsDataService])

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductsDataService = void 0;
 const common_1 = require("@nestjs/common");
+const typeorm_1 = require("typeorm");
 const products_repository_1 = require("./db/products.repository");
 let ProductsDataService = class ProductsDataService {
     constructor(productRepository) {
@@ -22,6 +23,9 @@ let ProductsDataService = class ProductsDataService {
     }
     async getProductById(id) {
         return await this.productRepository.findOneBy({ id });
+    }
+    async getProductsByName(name) {
+        return await this.productRepository.findBy({ name: (0, typeorm_1.Like)(name) });
     }
 };
 ProductsDataService = __decorate([

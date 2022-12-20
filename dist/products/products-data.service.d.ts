@@ -6,4 +6,5 @@ export declare class ProductsDataService {
     private products;
     getAllProducts(): Promise<Product[]>;
     getProductById(id: string): Promise<Product>;
+    getProductsByName(name: string): Promise<Product[]>;
 }
