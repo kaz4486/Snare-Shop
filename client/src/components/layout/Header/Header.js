@@ -3,7 +3,11 @@ import { Container, Nav, Navbar, Row, Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCartShopping,
+  faHouse,
+  faPhoneAlt,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   return (
@@ -18,6 +22,10 @@ const Header = () => {
         </Navbar.Brand>
         <Nav className={styles.nav}>
           <Nav.Link as={NavLink} to="/" className={clsx(styles.link, 'mx-4')}>
+            <FontAwesomeIcon
+              icon={faHouse}
+              className={clsx(styles.icon, 'mx-2')}
+            />
             Home
           </Nav.Link>
           <Nav.Link
@@ -25,13 +33,20 @@ const Header = () => {
             to="/cart"
             className={clsx(styles.link, 'mx-4')}
           >
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              className={clsx(styles.icon, 'mx-2')}
+            />
             Cart
           </Nav.Link>
           <Row className={styles.icon_div}>
-            <Col>
-              <FontAwesomeIcon icon={faPhoneAlt} className={styles.icon} />
+            <Col className="p-0">
+              <FontAwesomeIcon
+                icon={faPhoneAlt}
+                className={clsx(styles.icon, 'mx-2')}
+              />
             </Col>
-            <Col>
+            <Col className="p-0">
               <p className={styles.phone_number}> 258-515-978</p>
             </Col>
           </Row>
