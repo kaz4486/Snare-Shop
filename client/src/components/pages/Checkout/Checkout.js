@@ -56,9 +56,6 @@ const Checkout = () => {
     navigate('/');
   };
 
-  //imie, nazwisko, email, ulica, numer, miasto,
-  //button ma wracać do cart
-
   const updateTextField = ({ target }) => {
     const { value, name } = target;
     setUserData({ ...userData, [name]: value });
@@ -76,16 +73,16 @@ const Checkout = () => {
         <div className={styles.product_box} key={product.id}>
           <Container>
             <Row>
-              <Col xs={6} className="p-0">
+              <Col xs={6} className="p-0 d-flex justify-content-center">
                 <span>{product.name}</span>
               </Col>
-              <Col xs={2} className="p-0">
+              <Col xs={2} className="p-0 d-flex justify-content-center">
                 <span>{product.price}</span>
               </Col>
-              <Col xs={2} className="p-0">
+              <Col xs={2} className="p-0 d-flex justify-content-center">
                 <span>{product.count}</span>
               </Col>
-              <Col xs={2} className="px-1">
+              <Col xs={2} className="px-1 d-flex justify-content-center">
                 <span>$ {product.price * product.count}</span>
               </Col>
             </Row>

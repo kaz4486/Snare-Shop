@@ -53,10 +53,10 @@ const CartBox = ({ product }) => {
       <Row>
         {' '}
         <div className={styles.inner_product_box}>
-          <Col xs={6}>
+          <Col xs={6} className="d-flex justify-content-center">
             <span>{product.name}</span>
           </Col>
-          <Col xs={2}>
+          <Col xs={2} className="d-flex justify-content-center">
             <span>{product.price}</span>
           </Col>
           <Col xs={2} className="mx-1">
@@ -65,13 +65,13 @@ const CartBox = ({ product }) => {
               handleAmountChange={handleAmountChange}
             />
           </Col>
-          <Col xs={2}>
+          <Col xs={2} className="d-flex justify-content-center">
             <span>$ {product.price * productAmount}</span>
           </Col>
         </div>
       </Row>
-      <Row className="d-flex align-items-center">
-        <Col>
+      <Row className="d-flex align-items-center justify-content-center">
+        <Col xs={12} md={6} className="d-flex justify-content-center">
           <form>
             <input
               className={styles.info_input}
@@ -82,8 +82,12 @@ const CartBox = ({ product }) => {
             ></input>
           </form>
         </Col>
-        <Col key={product.name}>
-          {/* <Button onClick={handleRemoveBox}>Remove product</Button> */}
+        <Col
+          key={product.name}
+          xs={12}
+          md={6}
+          className="d-flex justify-content-center"
+        >
           <Button onClick={handleRemoveBox}> Remove product</Button>
         </Col>
       </Row>

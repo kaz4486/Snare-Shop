@@ -47,6 +47,20 @@ export const loadProductsRequest = () => {
   };
 };
 
+export const loadSearchedProductsRequest = (searchPhrase) => {
+  return async (dispatch) => {
+    dispatch(startRequest());
+    try {
+      let res = await axios.get(`${API_URL}/products/find/${searchPhrase}`);
+
+      dispatch(loadProducts(res.data));
+      dispatch(endRequest());
+    } catch (e) {
+      dispatch(errorRequest(e.message));
+    }
+  };
+};
+
 // initialState
 
 const initialState = {

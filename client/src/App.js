@@ -9,6 +9,7 @@ import Cart from './components/pages/Cart/Cart';
 import NotFound from './components/pages/NotFound/NotFound';
 import MainLayout from './components/layout/MainLayout/MainLayout';
 import Checkout from './components/pages/Checkout/Checkout';
+import SearchedProducts from './components/views/SearchedProducts/SearchedProducts';
 
 const App = () => {
   return (
@@ -18,6 +19,10 @@ const App = () => {
         <Route path="/products/:id" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="products/find/:searchPhrase"
+          element={<SearchedProducts />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </MainLayout>

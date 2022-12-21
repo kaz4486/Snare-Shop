@@ -1,4 +1,6 @@
 import styles from './AmountWidget.module.scss';
+import { Col, Row } from 'react-bootstrap';
+import clsx from 'clsx';
 
 const AmountWidget = ({ value, setProductAmount, handleAmountChange }) => {
   const handleDecreaseValue = () => {
@@ -21,25 +23,31 @@ const AmountWidget = ({ value, setProductAmount, handleAmountChange }) => {
 
   return (
     <div className={styles.widget}>
-      <button onClick={handleDecreaseValue}>-</button>
+      <Row className="p-0  d-flex justify-content-center">
+        <Col xs={12} md={4} className={clsx(styles.col_minus)}>
+          <button onClick={handleDecreaseValue}>-</button>
+        </Col>
+        <Col xs={12} md={4} className={clsx(styles.col_input)}>
+          <input
+            type="number"
+            min="0"
+            max="10"
+            value={value}
+            readOnly
 
-      <input
-        type="number"
-        min="0"
-        max="10"
-        value={value}
-        readOnly
-
-        //
-        // onKeyPress={(event) => {
-        //   if (!/[0-9]/.test(event.key)) {
-        //     event.preventDefault();
-        //   }
-        // }
-        // }
-      />
-
-      <button onClick={handleIncreaseValue}>+</button>
+            //
+            // onKeyPress={(event) => {
+            //   if (!/[0-9]/.test(event.key)) {
+            //     event.preventDefault();
+            //   }
+            // }
+            // }
+          />
+        </Col>
+        <Col xs={12} md={4} className={clsx(styles.col_plus)}>
+          <button onClick={handleIncreaseValue}>+</button>
+        </Col>
+      </Row>
     </div>
   );
 };

@@ -2,12 +2,15 @@
 
 .product_box {
   background-color: $color-white;
+
   .inner_product_box {
     display: flex;
     flex-direction: row;
     margin: 20px 0 20px 0;
     padding: 10px;
     font-size: 18px;
+    align-self: center;
+    justify-content: center;
   }
   input {
     border-color: $color-main-navy-blue;
@@ -18,5 +21,13 @@
     min-width: 300px;
     min-height: 30px;
     padding: 4px;
+  }
+}
+
+@media (max-width: 580px) {
+  .product_box {
+    .inner_product_box {
+      font-size: 14px;
+    }
   }
 }
