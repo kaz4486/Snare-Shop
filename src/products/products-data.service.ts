@@ -17,6 +17,6 @@ export class ProductsDataService {
   }
 
   async getProductsByName(name: string): Promise<Product[]> {
-    return await this.productRepository.findBy({ name: Like(name) });
+    return await this.productRepository.findBy({ name: Like(`%${name}%`) });
   }
 }

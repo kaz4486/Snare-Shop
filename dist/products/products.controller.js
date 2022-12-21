@@ -26,7 +26,11 @@ let ProductsController = class ProductsController {
         return await this.productService.getProductById(id);
     }
     async getProductsByName(searchPhrase) {
-        return await this.productService.getProductsByName(searchPhrase);
+        const products = await this.productService.getProductsByName(searchPhrase);
+        if (products === undefined || !products.length) {
+            throw new common_1.NotFoundException();
+        }
+        return products;
     }
 };
 __decorate([
@@ -36,14 +40,14 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "getAllProducts", null);
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id', new common_1.ParseUUIDPipe({ version: '4' }))),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "getProductById", null);
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)('/find/:searchPhrase'),
     __param(0, (0, common_1.Param)('searchPhrase')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

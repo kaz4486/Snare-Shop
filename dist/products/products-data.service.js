@@ -25,7 +25,7 @@ let ProductsDataService = class ProductsDataService {
         return await this.productRepository.findOneBy({ id });
     }
     async getProductsByName(name) {
-        return await this.productRepository.findBy({ name: (0, typeorm_1.Like)(name) });
+        return await this.productRepository.findBy({ name: (0, typeorm_1.Like)(`%${name}%`) });
     }
 };
 ProductsDataService = __decorate([
