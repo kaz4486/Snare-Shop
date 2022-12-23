@@ -11,7 +11,7 @@ import {
 
 const Header = () => {
   return (
-    <Navbar expand="lg" className={styles.navbar}>
+    <Navbar expand="lg" className={styles.navbar} variant="none">
       <Container>
         <Navbar.Brand as={NavLink} to="/" className={styles.navbar_brand}>
           <img

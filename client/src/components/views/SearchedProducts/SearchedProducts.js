@@ -10,6 +10,7 @@ import {
 import { Progress } from 'reactstrap';
 import ProductSummary from '../../common/ProductSummary/ProductSummary';
 import styles from '../SearchedProducts/SearchedProducts.module.scss';
+import Spinner from 'react-bootstrap/Spinner';
 
 const SearchedProducts = () => {
   const { searchPhrase } = useParams();
@@ -22,8 +23,7 @@ const SearchedProducts = () => {
     dispatch(loadSearchedProductsRequest(searchPhrase));
   }, [dispatch, searchPhrase]);
 
-  if (request.pending)
-    return <Progress animated color="primary" value={50} className="mt-3" />;
+  if (request.pending) return <Spinner className="mt-3" />;
   if (request.error)
     return (
       <Alert color="warning" className="mt-3">

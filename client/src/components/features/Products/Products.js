@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import ProductSummary from '../../common/ProductSummary/ProductSummary';
 import arrayChunk from '../../../utils/arrayChunk';
+import Spinner from 'react-bootstrap/Spinner';
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Products = () => {
     dispatch(loadProductsRequest());
   }, [dispatch]);
 
-  if (request.pending) return <Progress animated color="primary" value={50} />;
+  if (request.pending) return <Spinner />;
   if (request.error) return <Alert color="warning">{request.error}</Alert>;
   if (!request.success || !products.length)
     return <Alert color="info">Something went wrong...</Alert>;

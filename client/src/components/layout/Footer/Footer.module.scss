@@ -1,0 +1,82 @@
+@import '../../../styles/settings.scss';
+
+.footer {
+  background-color: $color-second-navy-blue;
+  color: $color-white;
+  .header {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      border-bottom: 1px solid $color-orange;
+    }
+  }
+  .list {
+    list-style: none;
+
+    a {
+      color: black;
+      text-decoration: none;
+      position: relative;
+      &::before {
+        content: '>';
+        position: absolute;
+        left: -22px;
+        top: -8px;
+        width: 20px;
+        height: 35px;
+        font-size: 13px;
+        text-align: center;
+        line-height: 35px;
+        color: $color-orange;
+        background-image: none;
+        -webkit-transition: all 0.2s ease-out;
+        -moz-transition: all 0.2s ease-out;
+        -o-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out;
+      }
+      &:hover {
+        color: $color-orange;
+      }
+    }
+  }
+  .icon_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    .icon {
+      min-width: 20px;
+      min-height: 20px;
+      top: 45%;
+      left: 45%;
+    }
+    .phone_number {
+      min-width: 125px;
+      margin-bottom: 0;
+      color: $color-white;
+    }
+  }
+}
+// &::after {
+//     content: '';
+//     position: absolute;
+//     bottom: -4px;
+//     left: 0;
+//     width: 100%;
+//     border-bottom: 4px solid $color-orange;
+//   }
+
+@media (max-width: 990px) {
+  .footer {
+    .header {
+      font-size: 20px;
+    }
+  }
+}

@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { addToCart, addToCartRequest } from '../../../redux/cartRedux';
 import AmountWidget from '../../features/AmountWidget/AmountWidget';
+import Spinner from 'react-bootstrap/Spinner';
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const Product = () => {
     navigate('/cart');
   };
 
-  if (request.pending) return <Progress animated color="primary" value={50} />;
+  if (request.pending) return <Spinner />;
   if (request.error) return <Alert color="warning">{request.error}</Alert>;
   if (!request.success)
     return <Alert color="info">Something went wrong...</Alert>;

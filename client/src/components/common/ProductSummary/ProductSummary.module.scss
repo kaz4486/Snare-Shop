@@ -34,10 +34,14 @@
     left: 81%;
     transform: translateX(-51%);
     background-color: $color-orange;
-    border-radius: 49%;
+    border-radius: 52%;
     color: $color-main-navy-blue;
     padding: 30px 15px 5px 15px;
-    width: 70px;
+    width: 83px;
     font-size: 20px;
+    p {
+      position: relative;
+      top: -3px;
+    }
   }
 }
