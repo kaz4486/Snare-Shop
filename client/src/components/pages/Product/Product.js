@@ -58,7 +58,12 @@ const Product = () => {
     navigate('/cart');
   };
 
-  if (request.pending) return <Spinner />;
+  if (request.pending)
+    return (
+      <Spinner className="mt-3" animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
   if (request.error) return <Alert color="warning">{request.error}</Alert>;
   if (!request.success)
     return <Alert color="info">Something went wrong...</Alert>;

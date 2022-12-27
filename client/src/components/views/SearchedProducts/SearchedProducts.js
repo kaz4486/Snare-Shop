@@ -23,7 +23,12 @@ const SearchedProducts = () => {
     dispatch(loadSearchedProductsRequest(searchPhrase));
   }, [dispatch, searchPhrase]);
 
-  if (request.pending) return <Spinner className="mt-3" />;
+  if (request.pending)
+    return (
+      <Spinner className="mt-3" animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
   if (request.error)
     return (
       <Alert color="warning" className="mt-3">
