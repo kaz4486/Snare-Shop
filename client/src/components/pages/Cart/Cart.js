@@ -40,7 +40,12 @@ const Cart = () => {
     navigate('/checkout');
   };
 
-  if (!cart.length) return <p>no products</p>;
+  if (!cart.length)
+    return (
+      <Container>
+        <h4 className={styles.heading}>Your cart is empty!</h4>
+      </Container>
+    );
   return (
     <Container>
       <div className={styles.products_section}>
