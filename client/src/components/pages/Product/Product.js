@@ -14,6 +14,7 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { addToCart, addToCartRequest } from '../../../redux/cartRedux';
 import AmountWidget from '../../features/AmountWidget/AmountWidget';
 import Spinner from 'react-bootstrap/Spinner';
+import Gallery from '../../features/Gallery/Gallery';
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -128,7 +129,7 @@ const Product = () => {
           </Row>
         </section>
         <section className={styles.gallery}>
-          <Row>
+          {/* <Row>
             {' '}
             {product.photos.map((photo) => (
               <Col sm={12} md={4} className=" align-self-center" key={photo}>
@@ -140,6 +141,9 @@ const Product = () => {
                 </div>
               </Col>
             ))}
+          </Row> */}
+          <Row>
+            <Gallery photos={product.photos} />
           </Row>
         </section>
       </Container>
