@@ -87,11 +87,16 @@ const Product = () => {
                   md={8}
                   className="d-flex justify-content-center align-items-center"
                 >
-                  <div className={styles.price}>$ {totalPrice}</div>
-                  <AmountWidget
-                    value={productAmount}
-                    setProductAmount={setProductAmount}
-                  />
+                  <Col sm={6} className="p-2 d-flex justify-content-end">
+                    {' '}
+                    <div className={styles.price}>$ {totalPrice}</div>
+                  </Col>
+                  <Col sm={6} className="p-2">
+                    <AmountWidget
+                      value={productAmount}
+                      setProductAmount={setProductAmount}
+                    />
+                  </Col>
                 </Col>
                 <Col
                   sm={12}

@@ -96,7 +96,6 @@ const cartReducer = (statePart = initialState, action = {}) => {
       } else {
       }
       return [...statePart, { ...action.payload }];
-    // localStorage.setItem('cartItems', JSON.stringify);
     case REMOVE_FROM_CART:
       return statePart.filter((product) => product.id !== action.payload);
     case LOAD_CART:

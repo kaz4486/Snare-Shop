@@ -1,0 +1,42 @@
+@import '../../../styles/settings.scss';
+
+// .carousel {
+//   max-width: fit-content;
+//   max-height: 500px;
+// }
+.img {
+  object-fit: cover;
+  width: max-content;
+  max-height: 500px;
+  //   margin: 0 20px;
+  //   border: solid 1px;
+  //   border-color: $color-main-navy-blue;
+  border-radius: 2%;
+  text-align: center;
+  position: relative;
+  box-shadow: 2px 2px 3px 3px $color-second-navy-blue;
+  margin: 5px;
+}
+
+.carousel {
+  padding: 10px;
+}
+
+@media (max-width: 1000px) {
+  .img {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 770px) {
+  .img {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 520px) {
+  .img {
+    max-width: 350px;
+    max-height: 300px;
+  }
+}
