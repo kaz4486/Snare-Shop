@@ -16,3 +16,19 @@
   margin-bottom: 18px;
   margin-top: 16px;
 }
+
+.table {
+  margin: 24px;
+  width: 100%;
+  .table_head {
+    font-size: 24px;
+    height: 70px;
+  }
+  .table_th {
+    height: 50px;
+  }
+  .table_th_center {
+    // padding: 0 10px 0 10px;
+    text-align: center;
+  }
+}

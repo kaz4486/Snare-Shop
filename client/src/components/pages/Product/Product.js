@@ -47,6 +47,7 @@ const Product = () => {
       totalPrice: product.price * parseInt(productAmount),
       comment: '',
       id: product.id,
+      mainPhoto: product.mainPhoto,
     };
   }
 

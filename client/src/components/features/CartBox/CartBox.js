@@ -15,17 +15,6 @@ const CartBox = ({ product }) => {
   const [productAmount, setProductAmount] = useState(product.count);
   const [comment, setComment] = useState(product.comment);
 
-  //   const [order, setOrder] = useState({
-  //     name: product.name,
-  //     price: product.price,
-  //     amount: productAmount,
-  //     additionalInfo: additionalInfo,
-  //   });
-
-  //   useEffect(() => {
-  //     setProductOrder(order);
-  //   }, [order]);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,49 +38,42 @@ const CartBox = ({ product }) => {
   };
 
   return (
-    <Container className={styles.product_box}>
-      <Row>
+    <tr className={styles.table_row}>
+      <td>
+        <img
+          src={`${process.env.PUBLIC_URL}/images/products/${product.mainPhoto}`}
+          alt={product.name}
+        />
+        <span>{product.name}</span>
+      </td>
+      <td className={styles.table_td_center}>
+        <span>{product.price}</span>
+      </td>
+      <td className={styles.table_td_center}>
+        <AmountWidget
+          value={productAmount}
+          handleAmountChange={handleAmountChange}
+        />
+      </td>
+      <td className={styles.table_td_center}>
+        <span>$ {product.price * productAmount}</span>
+      </td>
+      <td className={styles.table_td_center}>
         {' '}
-        <div className={styles.inner_product_box}>
-          <Col xs={6} className="d-flex justify-content-center">
-            <span>{product.name}</span>
-          </Col>
-          <Col xs={2} className="d-flex justify-content-center">
-            <span>{product.price}</span>
-          </Col>
-          <Col xs={2} className="mx-1">
-            <AmountWidget
-              value={productAmount}
-              handleAmountChange={handleAmountChange}
-            />
-          </Col>
-          <Col xs={2} className="d-flex justify-content-center">
-            <span>$ {product.price * productAmount}</span>
-          </Col>
-        </div>
-      </Row>
-      <Row className="d-flex align-items-center justify-content-center">
-        <Col xs={12} md={6} className="d-flex justify-content-center">
-          <form>
-            <input
-              className={styles.info_input}
-              type="textarea"
-              placeholder="Insert addition informations"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            ></input>
-          </form>
-        </Col>
-        <Col
-          key={product.name}
-          xs={12}
-          md={6}
-          className="d-flex justify-content-center"
-        >
-          <Button onClick={handleRemoveBox}> Remove product</Button>
-        </Col>
-      </Row>
-    </Container>
+        <form>
+          <input
+            className={styles.info_input}
+            type="textarea"
+            placeholder="Insert addition informations"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          ></input>
+        </form>
+      </td>
+      <td>
+        <Button onClick={handleRemoveBox}> Remove </Button>
+      </td>
+    </tr>
   );
 };
 
