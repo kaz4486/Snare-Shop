@@ -79,6 +79,9 @@
   .table_row {
     max-height: 150px;
     img {
+      width: 60px;
+      height: 60px;
+
       // visibility: hidden;
     }
   }
@@ -100,6 +103,14 @@
   .product_box {
     .inner_product_box {
       font-size: 14px;
+    }
+  }
+  .info_input {
+    max-width: 80px;
+    min-height: 30px;
+    padding: 4px;
+    &::placeholder {
+      font-size: 12px;
     }
   }
 }

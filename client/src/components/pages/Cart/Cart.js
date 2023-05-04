@@ -93,15 +93,15 @@ const Cart = () => {
       </Container>
     );
   return (
-    <Container>
+    <div>
       <table className={styles.table}>
         <thead className={styles.table_head}>
           <tr>
             <th className={styles.table_th_center}>Product</th>
             <th className={styles.table_th_center}>Price</th>
             <th className={styles.table_th_center}>Amount</th>
-            <th className={styles.table_th_center}>Product price</th>
             <th className={styles.table_th_center}>Comment</th>
+            <th className={styles.table_th_center}>Product price</th>
           </tr>
         </thead>
         <tbody>
@@ -122,7 +122,7 @@ const Cart = () => {
 
         <Button onClick={handleCheckoutClick}>Checkout</Button>
       </div>
-    </Container>
+    </div>
   );
 };
 

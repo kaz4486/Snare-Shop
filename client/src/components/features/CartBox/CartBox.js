@@ -61,9 +61,6 @@ const CartBox = ({ product }) => {
         />
       </td>
       <td className={styles.table_td_bg_dark}>
-        <span>$ {product.price * productAmount}</span>
-      </td>
-      <td className={styles.table_td_bg_white}>
         {' '}
         <form>
           <textarea
@@ -75,9 +72,14 @@ const CartBox = ({ product }) => {
           ></textarea>
         </form>
       </td>
-      <td className={styles.table_td_bg_dark}>
+      <td className={styles.table_td_bg_white}>
+        <span>$ {product.price * productAmount}</span>
         <Button onClick={handleRemoveBox}> Remove </Button>
       </td>
+
+      {/* <td className={styles.table_td_bg_dark}>
+        <Button onClick={handleRemoveBox}> Remove </Button>
+      </td> */}
     </tr>
   );
 };
