@@ -39,21 +39,15 @@ const CartBox = ({ product }) => {
   return (
     <tr className={styles.table_row}>
       <td>
-        <Row className="p-0">
-          <Col
-            xs={4}
-            className="d-flex justify-content-center align-items-center p-0"
-          >
+        <Row className={styles.first_cell}>
+          <Col sm={4} className="d-flex p-0 justify-content-center">
             <img
               src={`${process.env.PUBLIC_URL}/images/products/${product.mainPhoto}`}
               alt={product.name}
             />
           </Col>
-          <Col
-            xs={8}
-            className="d-flex justify-content-start align-items-center p-0"
-          >
-            <span>{product.name}</span>
+          <Col xs={8} className=" d-flex p-0">
+            <p className="m-0">{product.name}</p>
           </Col>
         </Row>
       </td>

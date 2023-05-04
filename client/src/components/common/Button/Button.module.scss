@@ -6,7 +6,7 @@
   border-radius: 3px;
   background-color: $color-second-navy-blue;
   padding: 5px 10px 5px 10px;
-  font-size: 18;
+  font-size: 18px;
   transition: min-width 0.5s ease-in;
   min-width: 120px;
   margin: 5px 0 10px 0;
@@ -17,5 +17,20 @@
     color: $color-orange;
     min-width: 150px;
     border-color: $color-second-navy-blue;
+  }
+}
+
+@media (max-width: 770px) {
+  .button {
+    font-size: 12px;
+    min-width: 80px;
+    transition: none;
+
+    &:hover {
+      background-color: $color-main-navy-blue;
+      color: $color-orange;
+      border-color: $color-second-navy-blue;
+      min-width: 80px;
+    }
   }
 }

@@ -37,6 +37,7 @@
   }
   .table_td_bg_white {
     text-align: center;
+    margin-left: 5px;
   }
   .table_td_bg_dark {
     text-align: center;
@@ -67,11 +68,31 @@
   }
 }
 
+.first_cell {
+  display: flex;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 990px) {
   .table_row {
+    max-height: 150px;
     img {
-      visibility: hidden;
+      // visibility: hidden;
     }
+  }
+
+  .first_cell {
+    padding: 0;
+    flex-direction: column;
+    justify-content: end;
+  }
+
+  .info_input {
+    max-width: 100px;
+    min-height: 30px;
+    padding: 4px;
   }
 }
 
@@ -80,11 +101,5 @@
     .inner_product_box {
       font-size: 14px;
     }
-  }
-
-  .info_input {
-    max-width: 100px;
-    min-height: 30px;
-    padding: 4px;
   }
 }
