@@ -24,10 +24,10 @@ const AmountWidget = ({ value, setProductAmount, handleAmountChange }) => {
   return (
     <div className={styles.widget}>
       <Row className="p-0  d-flex justify-content-center">
-        <Col xs={12} md={4} className={clsx(styles.col_minus)}>
+        <Col xs={12} lg={4} className={clsx(styles.col_minus)}>
           <button onClick={handleDecreaseValue}>-</button>
         </Col>
-        <Col xs={12} md={4} className={clsx(styles.col_input)}>
+        <Col xs={12} lg={4} className={clsx(styles.col_input)}>
           <input
             type="number"
             min="0"
@@ -44,7 +44,7 @@ const AmountWidget = ({ value, setProductAmount, handleAmountChange }) => {
             // }
           />
         </Col>
-        <Col xs={12} md={4} className={clsx(styles.col_plus)}>
+        <Col xs={12} lg={4} className={clsx(styles.col_plus)}>
           <button onClick={handleIncreaseValue}>+</button>
         </Col>
       </Row>

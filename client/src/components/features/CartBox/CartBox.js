@@ -1,10 +1,9 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import styles from '../CartBox/CartBox.module.scss';
 import AmountWidget from '../../features/AmountWidget/AmountWidget';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
-  getCart,
   removeFromCart,
   updateProductCartAmount,
   updateProductCartComment,
@@ -40,37 +39,49 @@ const CartBox = ({ product }) => {
   return (
     <tr className={styles.table_row}>
       <td>
-        <img
-          src={`${process.env.PUBLIC_URL}/images/products/${product.mainPhoto}`}
-          alt={product.name}
-        />
-        <span>{product.name}</span>
+        <Row className="p-0">
+          <Col
+            xs={4}
+            className="d-flex justify-content-center align-items-center p-0"
+          >
+            <img
+              src={`${process.env.PUBLIC_URL}/images/products/${product.mainPhoto}`}
+              alt={product.name}
+            />
+          </Col>
+          <Col
+            xs={8}
+            className="d-flex justify-content-start align-items-center p-0"
+          >
+            <span>{product.name}</span>
+          </Col>
+        </Row>
       </td>
-      <td className={styles.table_td_center}>
+      <td className={styles.table_td_bg_dark}>
         <span>{product.price}</span>
       </td>
-      <td className={styles.table_td_center}>
+      <td className={styles.table_td_bg_white}>
         <AmountWidget
           value={productAmount}
           handleAmountChange={handleAmountChange}
         />
       </td>
-      <td className={styles.table_td_center}>
+      <td className={styles.table_td_bg_dark}>
         <span>$ {product.price * productAmount}</span>
       </td>
-      <td className={styles.table_td_center}>
+      <td className={styles.table_td_bg_white}>
         {' '}
         <form>
-          <input
+          <textarea
             className={styles.info_input}
             type="textarea"
             placeholder="Insert addition informations"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-          ></input>
+          ></textarea>
         </form>
       </td>
-      <td>
+      <td className={styles.table_td_bg_dark}>
         <Button onClick={handleRemoveBox}> Remove </Button>
       </td>
     </tr>
