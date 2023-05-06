@@ -12,10 +12,11 @@ import {
 import CartBox from '../../features/CartBox/CartBox';
 import { useEffect } from 'react';
 import Button from '../../common/Button/Button';
-import ProductBar from '../../common/ProductBar/ProductBar';
+import ProductBar from '../../common/ProductBar/CartProducts';
 import styles from './Cart.module.scss';
 import { useState } from 'react';
 import AmountWidget from '../../features/AmountWidget/AmountWidget';
+import CartProducts from '../../common/ProductBar/CartProducts';
 
 const Cart = () => {
   const cart = useSelector(getCart);
@@ -94,26 +95,7 @@ const Cart = () => {
     );
   return (
     <div>
-      <table className={styles.table}>
-        <thead className={styles.table_head}>
-          <tr>
-            <th className={styles.table_th_center}>Product</th>
-            <th className={styles.table_th_center}>Price</th>
-            <th className={styles.table_th_center}>Amount</th>
-            <th className={styles.table_th_center}>Comment</th>
-            <th className={styles.table_th_center}>Product price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cart.map((product) => (
-            <CartBox
-              product={product}
-              key={product.id}
-              // setProductOrder={setProductOrder}
-            />
-          ))}
-        </tbody>
-      </table>
+      <CartProducts removeButton={true} />
 
       <div className={styles.price_section}>
         <Row>

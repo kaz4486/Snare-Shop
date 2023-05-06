@@ -10,7 +10,7 @@ import {
 } from '../../../redux/cartRedux';
 import Button from '../../common/Button/Button';
 
-const CartBox = ({ product }) => {
+const CartBox = ({ product, removeButton }) => {
   const [productAmount, setProductAmount] = useState(product.count);
   const [comment, setComment] = useState(product.comment);
 
@@ -73,8 +73,8 @@ const CartBox = ({ product }) => {
         </form>
       </td>
       <td className={styles.table_td_bg_white}>
-        <span>$ {product.price * productAmount}</span>
-        <Button onClick={handleRemoveBox}> Remove </Button>
+        <span className="m-2">$ {product.price * productAmount}</span>
+        {removeButton && <Button onClick={handleRemoveBox}> Remove </Button>}
       </td>
 
       {/* <td className={styles.table_td_bg_dark}>
