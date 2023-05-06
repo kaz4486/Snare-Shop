@@ -1,0 +1,33 @@
+@import '../../../styles/settings.scss';
+
+.table {
+  margin-top: 30px;
+  border: solid 1px $color-second-navy-blue;
+  width: 80%;
+  padding: 10px;
+  .head {
+    border-bottom: solid 3px $color-orange;
+  }
+  input {
+    margin: 10px;
+  }
+  .selected_row {
+    background-color: $color-second-navy-blue;
+  }
+  //   tr {
+  //     border: solid 0.5px $color-second-navy-blue;
+  //   }
+  //   td {
+  //     border: solid 0.5px $color-second-navy-blue;
+  //   }
+  //   tr {
+  //     display: flex;
+  //     justify-content: flex-start;
+  //     & > td {
+  //       margin-right: 10px;
+  //     }
+  //   }
+  //   input {
+  //     margin-right: 5px;
+  //   }
+}

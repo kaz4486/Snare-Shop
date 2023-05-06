@@ -40,13 +40,13 @@ const CartBox = ({ product, removeButton }) => {
     <tr className={styles.table_row}>
       <td>
         <Row className={styles.first_cell}>
-          <Col sm={4} className="d-flex p-0 justify-content-center">
+          <Col xs={5} className="d-flex p-0 justify-content-center">
             <img
               src={`${process.env.PUBLIC_URL}/images/products/${product.mainPhoto}`}
               alt={product.name}
             />
           </Col>
-          <Col xs={8} className=" d-flex p-0">
+          <Col xs={7} className=" d-flex p-0">
             <p className="m-0">{product.name}</p>
           </Col>
         </Row>

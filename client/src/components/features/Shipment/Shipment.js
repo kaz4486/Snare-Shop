@@ -1,13 +1,17 @@
+import styles from './Shipment.module.scss';
+
 const Shipment = ({ shipment, setShipment, shipmentPrices }) => {
   return (
-    <table>
+    <table className={styles.table}>
       <thead>
-        <tr>
-          <th>Shipment options</th>
+        <tr className={styles.head}>
+          <th>
+            <span className="m-2">Shipment options </span>
+          </th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody className={styles.body}>
+        <tr className={shipment === 'carrier' && styles.selected_row}>
           <td>
             <input
               type="radio"
@@ -17,14 +21,15 @@ const Shipment = ({ shipment, setShipment, shipmentPrices }) => {
               checked={shipment === 'carrier'}
               onChange={() => setShipment('carrier')}
             />
+            <label htmlFor="carrier">Carrier</label>
+          </td>
 
-            <label htmlFor="carrier">
-              Carrier <span>1-2 days</span>{' '}
-              <span>{shipmentPrices.carrier}$</span>
-            </label>
+          <td>1-2 days</td>
+          <td>
+            <span>{shipmentPrices.carrier}$</span>
           </td>
         </tr>
-        <tr>
+        <tr className={shipment === 'parcelLocker' && styles.selected_row}>
           <td>
             <input
               type="radio"
@@ -34,13 +39,17 @@ const Shipment = ({ shipment, setShipment, shipmentPrices }) => {
               checked={shipment === 'parcelLocker'}
               onChange={() => setShipment('parcelLocker')}
             />
-            <label htmlFor="parcel locker">
-              Parcel Locker <span>1-2 days</span>{' '}
-              <span>{shipmentPrices.parcelLocker}$</span>
-            </label>
+            <label htmlFor="parcel locker">Parcel Locker </label>
+          </td>
+
+          <td>
+            <span>1-2 days</span>
+          </td>
+          <td>
+            <span>{shipmentPrices.parcelLocker}$</span>
           </td>
         </tr>
-        <tr>
+        <tr className={shipment === 'post' && styles.selected_row}>
           <td>
             <input
               type="radio"
@@ -50,12 +59,17 @@ const Shipment = ({ shipment, setShipment, shipmentPrices }) => {
               checked={shipment === 'post'}
               onChange={() => setShipment('post')}
             />
-            <label htmlFor="post">
-              Post <span>2-3 days</span> <span>{shipmentPrices.post}$</span>
-            </label>
+            <label htmlFor="post">Post</label>
+          </td>
+
+          <td>
+            <span>2-3 days</span>
+          </td>
+          <td>
+            <span>{shipmentPrices.post}$</span>
           </td>
         </tr>
-        <tr>
+        <tr className={shipment === 'selfPickup' && styles.selected_row}>
           <td>
             <input
               type="radio"
@@ -65,9 +79,12 @@ const Shipment = ({ shipment, setShipment, shipmentPrices }) => {
               checked={shipment === 'selfPickup'}
               onChange={() => setShipment('selfPickup')}
             />
-            <label htmlFor="selfPickup">
-              Self-pickup <span>{shipmentPrices.selfPickup} $</span>
-            </label>
+            <label htmlFor="selfPickup">Self-pickup</label>
+          </td>
+
+          <td>-</td>
+          <td>
+            <span>{shipmentPrices.selfPickup} $</span>
           </td>
         </tr>
       </tbody>

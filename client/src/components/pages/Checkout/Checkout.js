@@ -48,7 +48,7 @@ const Checkout = () => {
   const order = {
     products: cart,
     user: userData,
-    totalPrice: cartTotal,
+    totalPrice: cartTotal + shipmentPrices[shipment],
   };
 
   const {
@@ -82,7 +82,7 @@ const Checkout = () => {
     <Container>
       <CartProducts />
 
-      <Col sm={6}>
+      <Col sm={6} className="m-2">
         {' '}
         <h5>Total price: ${cartTotal + shipmentPrices[shipment]}</h5>
       </Col>
