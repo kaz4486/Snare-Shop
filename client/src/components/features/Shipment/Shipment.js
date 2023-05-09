@@ -11,7 +11,7 @@ const Shipment = ({ shipment, setShipment, shipmentPrices }) => {
         </tr>
       </thead>
       <tbody className={styles.body}>
-        <tr className={shipment === 'carrier' && styles.selected_row}>
+        <tr className={shipment === 'carrier' ? styles.selected_row : ''}>
           <td>
             <input
               type="radio"
