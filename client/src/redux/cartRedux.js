@@ -46,45 +46,11 @@ export const clearCart = () => ({ type: CLEAR_CART });
 
 const initialState = [];
 
-// let initialState = [];
-
-// thunks
-
-// export const addToCartRequest = (data) => {
-//   return async (dispatch) => {
-//     dispatch(addToCart(data));
-//     try {
-//       initialState = localStorage.getItem('cartPersist')
-//         ? [JSON.parse(localStorage.getItem('cartPersist'))]
-//         : [];
-//     } catch (e) {
-//       console.log('getError', e.message);
-//     }
-//     localStorage.setItem('cartPersist', JSON.stringify(initialState));
-//     const cartProducts = JSON.parse(localStorage.getItem('cartPersist'));
-
-//     console.log(cartProducts);
-//   };
-// };
-
-// export const addToCartRequest = (data) => {
-//   return async (dispatch) => {
-//     await dispatch(addToCart(data));
-
-//     localStorage.setItem('cartPersist', JSON.stringify(initialState));
-//     // localStorage.setItem('cart', JSON.stringify(initialState));
-//     // const cartProducts = JSON.parse(localStorage.getItem('cart'));
-
-//     // console.log(cartProducts);
-//   };
-// };
-
 //reducer
 
 const cartReducer = (statePart = initialState, action = {}) => {
   switch (action.type) {
     case ADD_TO_CART:
-      console.log(statePart);
       const existingProduct = statePart.find(
         (product) => product.id === action.payload.id,
       );

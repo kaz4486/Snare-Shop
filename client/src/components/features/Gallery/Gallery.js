@@ -4,7 +4,6 @@ import '@brainhubeu/react-carousel/lib/style.css';
 import styles from './Gallery.module.scss';
 
 const Gallery = ({ photos }) => {
-  console.log(photos);
   const [value, setValue] = useState(0);
 
   let slides = [];

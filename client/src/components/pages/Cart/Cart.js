@@ -23,69 +23,22 @@ const Cart = () => {
   const cartTotal = useSelector(getCartTotal);
   const dispatch = useDispatch();
 
-  // const cartProducts = JSON.parse(localStorage.getItem('cart'));
-  // console.log(cartProducts);
-
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(loadCart());
   }, [dispatch]);
 
-  // const [productOrder, setProductOrder] = useState({});
-
-  // // const orders = [];
-  // const order = [];
-  // console.log(order);
-
-  // useEffect(() => {
-  //   order.push(productOrder);
-  // }, [productOrder]);
-
-  // const prepareOrder = (productOrder) => {
-  //   orders.push(productOrder);
-  // };
-
   const handleCheckoutClick = () => {
     navigate('/checkout');
   };
 
-  // cartbox
-
   const [productAmount, setProductAmount] = useState(cart.product?.count);
-  console.log(productAmount);
   const [comment, setComment] = useState(cart.product?.comment);
-
-  //   const [order, setOrder] = useState({
-  //     name: product.name,
-  //     price: product.price,
-  //     amount: productAmount,
-  //     additionalInfo: additionalInfo,
-  //   });
-
-  //   useEffect(() => {
-  //     setProductOrder(order);
-  //   }, [order]);
 
   useEffect(() => {
     dispatch(updateProductCartComment({ id: cart.product?.id, comment }));
   }, [comment, dispatch, cart.product?.id]);
-
-  // const handleRemoveBox = (e) => {
-  //   e.preventDefault();
-  //   dispatch(removeFromCart(cart.product?.id));
-  // };
-
-  // const handleAmountChange = (newAmount) => {
-  //   setProductAmount(newAmount);
-  //   dispatch(
-  //     updateProductCartAmount({
-  //       id: cart.product?.id,
-  //       count: newAmount,
-  //       totalPrice: cart.product?.price * newAmount,
-  //     }),
-  //   );
-  // };
 
   if (!cart.length)
     return (
