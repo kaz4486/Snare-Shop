@@ -38,14 +38,34 @@ export const updateProductRating = (payload) => ({
 });
 
 // thunks
-// export const updateRatingRequest = payload => {
-//     return async (dispatch) => {
-//         dispatch(startRequest());
-//         try {
-//             let res =
-//         }
+export const updateRatingRequest = (data) => {
+  return async (dispatch) => {
+    dispatch(startRequest({ name: UPDATE_PRODUCT_RATING }));
+    try {
+      let res = await axios.patch(`${API_URL}/products`, data);
+      dispatch(updateProductRating(res.data));
+
+      dispatch(endRequest({ name: UPDATE_PRODUCT_RATING }));
+    } catch (e) {
+      dispatch(errorRequest({ name: UPDATE_PRODUCT_RATING, error: e.message }));
+    }
+  };
+};
+
+// export const createOrderRequest = (data) => {
+//   return async (dispatch) => {
+//     dispatch(startRequest({ name: CREATE_ORDER }));
+//     try {
+//       let res = await axios.post(`${API_URL}/orders`, data);
+//       console.log(res.data);
+//       dispatch(createOrder(res.data));
+
+//       dispatch(endRequest({ name: CREATE_ORDER }));
+//     } catch (e) {
+//       dispatch(errorRequest({ name: CREATE_ORDER, error: e.message }));
 //     }
-// }
+//   };
+// };
 
 export const loadProductsRequest = () => {
   return async (dispatch) => {
