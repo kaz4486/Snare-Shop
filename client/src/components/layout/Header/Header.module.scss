@@ -1,9 +1,10 @@
 @import '../../../styles/settings.scss';
 
 .navbar {
-  background-color: $color-main-navy-blue;
+  background-color: $color-second-navy-blue;
   font-size: 500;
   color: $color-orange;
+  height: 170px;
 
   .navbar_brand {
     color: black;
@@ -58,35 +59,19 @@
   color: $color-white;
 }
 
-// .navbar-light {
-//   .navbar-brand {
-//     color: $color-white;
+.shop_bonuses ul {
+  list-style: none;
+  font-size: 25px;
+  color: white;
+  span {
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+  }
+}
 
-//     &:hover,
-//     &:focus {
-//       color: $color-orange;
-//     }
-//   }
+// .shop_bonuses ul li:nth-child(1) span{
 
-//   .navbar-nav {
-//     .nav-link {
-//       color: $color-white;
-
-//       &:hover,
-//       &:focus {
-//         color: $color-orange;
-//       }
-
-//       &.disabled {
-//         color: grey;
-//       }
-//     }
-
-//     .show > .nav-link,
-//     .nav-link.active {
-//       color: $color-orange;
-//     }
-//   }
 // }
 
 @media (max-width: 980px) {

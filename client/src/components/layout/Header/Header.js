@@ -8,6 +8,7 @@ import {
   faHouse,
   faPhoneAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import { BiTimer } from 'react-icons/bi';
 
 const Header = () => {
   return (
@@ -51,6 +52,21 @@ const Header = () => {
             </Col>
           </Row>
         </Nav>
+        <div className={styles.shop_bonuses}>
+          <ul>
+            <li>
+              <BiTimer />
+              <span> Szybka realizacja</span>
+            </li>
+            <li>
+              <span>Wystawiamy faktury 23%</span>
+            </li>
+            <li>
+              {' '}
+              <span>Zwrot do 14 dni</span>
+            </li>
+          </ul>
+        </div>
       </Container>
     </Navbar>
   );
