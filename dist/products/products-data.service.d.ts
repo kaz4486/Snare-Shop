@@ -7,4 +7,5 @@ export declare class ProductsDataService {
     getAllProducts(): Promise<Product[]>;
     getProductById(id: string): Promise<Product>;
     getProductsByName(name: string): Promise<Product[]>;
+    updateProductRating(id: string, stars: number): Promise<Product>;
 }

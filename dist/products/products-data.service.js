@@ -27,6 +27,17 @@ let ProductsDataService = class ProductsDataService {
     async getProductsByName(name) {
         return await this.productRepository.findBy({ name: (0, typeorm_1.Like)(`%${name}%`) });
     }
+    async updateProductRating(id, stars) {
+        const product = await this.productRepository.findOneBy({ id });
+        if (product) {
+            product.stars = stars;
+            await this.productRepository.save(product);
+        }
+        else {
+            throw new common_1.NotFoundException();
+        }
+        return product;
+    }
 };
 ProductsDataService = __decorate([
     (0, common_1.Injectable)(),

@@ -6,4 +6,5 @@ export declare class ProductsController {
     getAllProducts(): Promise<Product[]>;
     getProductById(id: string): Promise<Product>;
     getProductsByName(searchPhrase: string): Promise<Product[]>;
+    updateProductRating(id: string, stars: number): Promise<Product>;
 }

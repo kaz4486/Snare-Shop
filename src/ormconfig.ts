@@ -3,7 +3,6 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-
 export const ORMConfig = {
   name: 'default',
   type: 'mysql',
@@ -15,4 +14,9 @@ export const ORMConfig = {
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
   synchronize: true,
   // synch na produkcji false
+
+  migrations: ['src/migrations/*.ts'],
+  cli: {
+    migrationsDir: 'src/migrations',
+  },
 };
