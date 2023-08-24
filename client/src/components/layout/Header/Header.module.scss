@@ -12,10 +12,9 @@
     }
     &:hover {
       color: $color-orange;
-      img {
-        transform: scale(120%);
-        margin-right: 5px;
-      }
+      transform: scale(120%);
+      transition: all 1s;
+      margin-right: 5px;
     }
   }
   .nav {

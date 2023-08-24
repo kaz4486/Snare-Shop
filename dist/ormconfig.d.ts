@@ -8,4 +8,8 @@ export declare const ORMConfig: {
     database: string;
     entities: string[];
     synchronize: boolean;
+    migrations: string[];
+    cli: {
+        migrationsDir: string;
+    };
 };

@@ -13,5 +13,9 @@ exports.ORMConfig = {
     database: process.env.DB_DATABASE,
     entities: [__dirname + '/**/*.entity{.ts,.js}'],
     synchronize: true,
+    migrations: ['src/migrations/*.ts'],
+    cli: {
+        migrationsDir: 'src/migrations',
+    },
 };
 //# sourceMappingURL=ormconfig.js.map
