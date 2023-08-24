@@ -22,6 +22,17 @@
   padding: 10px;
 }
 
+.dots li > div[type='button'] {
+  &::before {
+    width: 15px;
+    height: 15px;
+  }
+  &:hover {
+    height: 25px;
+    color: $color-orange !important;
+  }
+}
+
 @media (max-width: 1000px) {
   .img {
     max-width: 600px;

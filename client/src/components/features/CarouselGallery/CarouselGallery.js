@@ -75,7 +75,12 @@ const CarouselGallery = () => {
         }
         className={styles.carousel}
       />
-      <Dots value={value} onChange={onChange} number={slides.length} />
+      <Dots
+        value={value}
+        onChange={onChange}
+        number={slides.length}
+        className={styles.dots}
+      />
     </div>
   );
 };
