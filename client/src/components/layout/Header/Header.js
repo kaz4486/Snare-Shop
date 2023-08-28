@@ -15,9 +15,9 @@ import { GiReturnArrow } from 'react-icons/gi';
 const Header = () => {
   return (
     <Navbar expand="lg" className={styles.navbar} variant="none">
-      <Container className="m-1, d-flex, align-content-center">
+      <div className={styles.container}>
         <Row>
-          <Col sm={2}>
+          <Col sm={2} className=" align-self-center">
             <Navbar.Brand as={NavLink} to="/" className={styles.navbar_brand}>
               <img
                 src={`${process.env.PUBLIC_URL}/images/brandLogo.png`}
@@ -26,7 +26,7 @@ const Header = () => {
               SnareShop
             </Navbar.Brand>
           </Col>
-          <Col sm={7} className="justify-content-right">
+          <Col sm={7} className="justify-content-right align-self-center">
             <Nav className={styles.nav}>
               <Nav.Link
                 as={NavLink}
@@ -59,7 +59,7 @@ const Header = () => {
               </div>
             </Nav>
           </Col>
-          <Col sm={3}>
+          <Col sm={3} className="p-0">
             <div className={styles.shop_bonuses}>
               <ul>
                 <li>
@@ -78,7 +78,7 @@ const Header = () => {
             </div>
           </Col>
         </Row>
-      </Container>
+      </div>
     </Navbar>
   );
 };

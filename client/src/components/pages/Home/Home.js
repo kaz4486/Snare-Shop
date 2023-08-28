@@ -8,8 +8,8 @@ import Sale from '../../views/Sale/Sale';
 const Home = () => {
   return (
     <div>
-      <CarouselGallery />
       <SearchInput />
+      <CarouselGallery />
       <BestSellers />
       <Sale />
       <Brands />
