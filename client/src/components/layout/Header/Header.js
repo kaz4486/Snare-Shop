@@ -50,14 +50,14 @@ const Header = () => {
                 />
                 Cart
               </Nav.Link>
-              <div className={styles.icon_div}>
-                <FontAwesomeIcon
-                  icon={faPhoneAlt}
-                  className={clsx(styles.icon)}
-                />
-                <span className={styles.phone_number}> 258-515-978</span>
-              </div>
             </Nav>
+            <div className={styles.icon_div}>
+              <FontAwesomeIcon
+                icon={faPhoneAlt}
+                className={clsx(styles.icon)}
+              />
+              <span className={styles.phone_number}> 258-515-978</span>
+            </div>
           </Col>
           <Col sm={3} className="p-0">
             <div className={styles.shop_bonuses}>

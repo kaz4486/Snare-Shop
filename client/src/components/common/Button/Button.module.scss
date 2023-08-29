@@ -20,6 +20,24 @@
   }
 }
 
+.remove {
+  background: none;
+  width: 10px;
+  color: $color-second-navy-blue;
+  border: none;
+  transition: none;
+  padding-left: 5px;
+  min-width: unset;
+
+  &:hover {
+    background: none;
+    color: rgb(163, 4, 4);
+    border: none;
+
+    min-width: unset;
+  }
+}
+
 @media (max-width: 770px) {
   .button {
     font-size: 12px;

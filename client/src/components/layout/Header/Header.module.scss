@@ -36,7 +36,7 @@
   .nav {
     padding: 10px;
 
-    justify-content: center;
+    justify-content: flex-end;
     margin-right: 10px;
 
     .link {
@@ -52,20 +52,23 @@
         color: $color-orange;
       }
     }
-    .icon_div {
-      margin-left: 20px;
-      align-self: center;
-      .icon {
-        min-width: 20px;
-        min-height: 20px;
-        top: 45%;
-        left: 45%;
-      }
-      .phone_number {
-        min-width: 125px;
-        margin-bottom: 0;
-        color: $color-white;
-      }
+  }
+
+  .icon_div {
+    margin: 0 36px 0 20px;
+    align-self: center;
+    text-align: end;
+
+    .icon {
+      min-width: 20px;
+      min-height: 20px;
+      top: 45%;
+      left: 45%;
+    }
+    .phone_number {
+      min-width: 125px;
+      margin-bottom: 0;
+      color: $color-white;
     }
   }
 }
