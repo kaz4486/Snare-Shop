@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Container, Nav, Navbar, Row, Col } from 'react-bootstrap';
+import { Nav, Navbar, Row, Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -5,7 +5,6 @@ import Carousel, {
 } from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
 import styles from './CarouselGallery.module.scss';
 import { Link } from 'react-router-dom';
 
@@ -44,7 +43,7 @@ const CarouselGallery = () => {
   };
 
   return (
-    <div className="py-3">
+    <div>
       <Carousel
         value={value}
         slides={slides}
