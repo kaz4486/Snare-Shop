@@ -5,7 +5,7 @@ import {
   loadProductsRequest,
 } from '../../../redux/productsRedux';
 import { Alert } from 'reactstrap';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import ProductSummary from '../../common/ProductSummary/ProductSummary';
 import arrayChunk from '../../../utils/arrayChunk';
@@ -16,9 +16,20 @@ const Products = () => {
   const products = useSelector(getProducts);
   const request = useSelector(getRequest);
 
+  const [selectedFilter, setSelectedFilter] = useState('');
+  console.log(selectedFilter);
+
   useEffect(() => {
     dispatch(loadProductsRequest());
   }, [dispatch]);
+
+  const filteredProducts = selectedFilter
+    ? products.filter((product) => product[selectedFilter])
+    : products;
+
+  const handleFilterChange = (e) => {
+    setSelectedFilter(e.target.value);
+  };
 
   if (request.pending)
     return (
@@ -31,20 +42,18 @@ const Products = () => {
     return <Alert color="info">Something went wrong...</Alert>;
   if (request.success)
     return (
-      <Container>
-        {/* {products.map((product) => (
-          <Col
-            key={product.id}
-            xs={12}
-            sm={6}
-            lg={4}
-            className="justify-content-center mb-2 mx-1"
-          >
-            <ProductSummary key={product.id} {...product} />{' '}
-          </Col>
-        ))} */}
+      <Container className="my-5">
+        <select
+          id="filter"
+          value={selectedFilter}
+          onChange={handleFilterChange}
+        >
+          <option value="sale">sale</option>
+          <option value="">all</option>
+          <option value="best seller">best seller</option>
+        </select>
 
-        {arrayChunk(products, products.length).map((row, i) => (
+        {arrayChunk(filteredProducts, filteredProducts.length).map((row, i) => (
           <div key={i} className="row mx-auto">
             {row.map((col, i) => (
               <div

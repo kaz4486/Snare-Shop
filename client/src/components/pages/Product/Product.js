@@ -5,13 +5,13 @@ import {
   getRequest,
   loadProductsRequest,
 } from '../../../redux/productsRedux';
-import { Alert, Button, Progress } from 'reactstrap';
+import { Alert, Button } from 'reactstrap';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import styles from './Product.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
-import { addToCart, addToCartRequest } from '../../../redux/cartRedux';
+import { addToCart } from '../../../redux/cartRedux';
 import AmountWidget from '../../features/AmountWidget/AmountWidget';
 import Spinner from 'react-bootstrap/Spinner';
 import Gallery from '../../features/Gallery/Gallery';
