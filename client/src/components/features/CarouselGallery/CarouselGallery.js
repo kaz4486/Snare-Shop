@@ -15,7 +15,7 @@ const CarouselGallery = () => {
   const slides = [
     <Link to={'/products/8d3dcd52-e923-4b57-8821-5a040fb3f51d'}>
       <img
-        src={`${process.env.PUBLIC_URL}/images/carousel/Theodore1.jpg`}
+        src={`${process.env.PUBLIC_URL}/images/carousel/Theodore.jpg`}
         alt="john theodore"
         className={styles.img}
       />
@@ -23,7 +23,7 @@ const CarouselGallery = () => {
 
     <Link to={'/products/337ae709-ddb4-4e3f-bfc0-0eb1ff52682a'}>
       <img
-        src={`${process.env.PUBLIC_URL}/images/carousel/Chad2.jpg`}
+        src={`${process.env.PUBLIC_URL}/images/carousel/Chad.jpg`}
         alt="chad smiths"
         className={styles.img}
       />
@@ -75,7 +75,12 @@ const CarouselGallery = () => {
         }
         className={styles.carousel}
       />
-      <Dots value={value} onChange={onChange} number={slides.length} />
+      <Dots
+        value={value}
+        onChange={onChange}
+        number={slides.length}
+        className={styles.dots}
+      />
     </div>
   );
 };

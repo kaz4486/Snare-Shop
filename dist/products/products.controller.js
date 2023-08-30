@@ -32,6 +32,9 @@ let ProductsController = class ProductsController {
         }
         return products;
     }
+    async updateProductRating(id, stars) {
+        return this.productService.updateProductRating(id, stars);
+    }
 };
 __decorate([
     (0, common_1.Get)(),
@@ -53,6 +56,14 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "getProductsByName", null);
+__decorate([
+    (0, common_1.Patch)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Number]),
+    __metadata("design:returntype", Promise)
+], ProductsController.prototype, "updateProductRating", null);
 ProductsController = __decorate([
     (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [products_data_service_1.ProductsDataService])

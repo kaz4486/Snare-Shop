@@ -1,9 +1,11 @@
 import {
   Controller,
   Get,
+  Patch,
   NotFoundException,
   Param,
   ParseUUIDPipe,
+  Body,
 } from '@nestjs/common';
 import { Product } from './db/products.entity';
 import { ProductsDataService } from './products-data.service';
@@ -31,4 +33,17 @@ export class ProductsController {
     }
     return products;
   }
+
+  @Patch(':id')
+  async updateProductRating(
+    @Param('id') id: string,
+    @Body() stars: number,
+  ): Promise<Product> {
+    return this.productService.updateProductRating(id, stars);
+  }
 }
+
+// @Post()
+// async addOrder(@Body() order: CreateOrderDto): Promise<Order> {
+//   return await this.orderService.addOrder(order);
+// }

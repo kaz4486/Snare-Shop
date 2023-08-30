@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "typeorm": "typeorm",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -55,8 +56,7 @@
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
     "slick-carousel": "^1.8.1",
-    "src": "^1.1.2",
-    "typeorm": "^0.3.10",
+    "typeorm": "^0.3.17",
     "uuid": "^9.0.0",
     "uuid4": "^2.0.3"
   },

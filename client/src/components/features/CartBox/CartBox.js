@@ -9,6 +9,8 @@ import {
   updateProductCartComment,
 } from '../../../redux/cartRedux';
 import Button from '../../common/Button/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const CartBox = ({ product, removeButton }) => {
   const [productAmount, setProductAmount] = useState(product.count);
@@ -73,8 +75,15 @@ const CartBox = ({ product, removeButton }) => {
         </form>
       </td>
       <td className={styles.table_td_bg_white}>
-        <span className="m-2">$ {product.price * productAmount}</span>
-        {removeButton && <Button onClick={handleRemoveBox}> Remove </Button>}
+        <span className="m-2">
+          $ {product.price * productAmount}
+          {removeButton && (
+            <Button onClick={handleRemoveBox} remove>
+              {' '}
+              <FontAwesomeIcon icon={faTrash} />{' '}
+            </Button>
+          )}
+        </span>
       </td>
 
       {/* <td className={styles.table_td_bg_dark}>

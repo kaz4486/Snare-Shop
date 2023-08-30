@@ -7,4 +7,5 @@ export declare class Product {
     photos: Array<string>;
     count: number;
     sale: boolean;
+    stars: number;
 }

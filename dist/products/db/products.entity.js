@@ -49,6 +49,12 @@ __decorate([
     }),
     __metadata("design:type", Boolean)
 ], Product.prototype, "sale", void 0);
+__decorate([
+    (0, typeorm_1.Column)({
+        default: 1,
+    }),
+    __metadata("design:type", Number)
+], Product.prototype, "stars", void 0);
 Product = __decorate([
     (0, typeorm_1.Entity)({
         name: 'products',

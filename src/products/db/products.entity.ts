@@ -31,4 +31,9 @@ export class Product {
     type: 'bool',
   })
   sale: boolean;
+
+  @Column({
+    default: 1,
+  })
+  stars: number;
 }

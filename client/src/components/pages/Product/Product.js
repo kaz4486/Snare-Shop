@@ -23,6 +23,8 @@ const Product = () => {
   const request = useSelector(getRequest);
   const navigate = useNavigate();
 
+  console.log(product);
+
   useEffect(() => {
     dispatch(loadProductsRequest());
   }, [dispatch]);
@@ -125,6 +127,7 @@ const Product = () => {
               </Row>
               <Row>
                 <article>{product.description}</article>
+                <p>{product.stars}</p>
               </Row>
             </Col>
           </Row>

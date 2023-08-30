@@ -16,11 +16,6 @@ const Gallery = ({ photos }) => {
     );
     return slides.push(photoImg);
   });
-  // const slides = [
-  //   <img src={imageOne} />,
-  //   <img src={imageTwo} />,
-  //   <img src={imageThree} />,
-  // ];
 
   let thumbnails = [];
 
@@ -35,11 +30,6 @@ const Gallery = ({ photos }) => {
     );
     return thumbnails.push(photoImg);
   });
-  //   const thumbnails = [
-  //     <img src={thumbnailOne} />,
-  //     <img src={thumbnailTwo} />,
-  //     <img src={thumbnailThree} />,
-  //   ];
 
   const onChange = (value) => {
     setValue(value);
@@ -58,7 +48,6 @@ const Gallery = ({ photos }) => {
         thumbnails={thumbnails}
         value={value}
         onChange={onChange}
-        // number={slides.length}
       />
     </div>
   );
