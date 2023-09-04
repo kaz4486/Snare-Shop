@@ -1,5 +1,5 @@
 import { OrderedProduct } from './db/ordered-products.entity';
-import { ProductRepository } from 'src/products/db/products.repository';
+import { ProductRepository } from '../products/db/products.repository';
 import { OrderRepository } from './db/order.repository';
 import { OrderedProductRepository } from './db/ordered-products.repository';
 import { CreateOrderedProductDto, CreateOrderDto } from './dto/create-order.dto';

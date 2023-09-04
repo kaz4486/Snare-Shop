@@ -11,7 +11,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { Order } from './db/orders.entity';
-import { dateToArray } from 'src/shared/helpers/date.helper';
+import { dateToArray } from '../shared/helpers/date.helper';
 
 @Controller('orders')
 export class OrdersController {

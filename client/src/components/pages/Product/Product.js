@@ -127,7 +127,6 @@ const Product = () => {
               </Row>
               <Row>
                 <article>{product.description}</article>
-                <p>{product.stars}</p>
               </Row>
             </Col>
           </Row>

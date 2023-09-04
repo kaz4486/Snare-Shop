@@ -1,15 +1,15 @@
 import { OrderedProduct } from './db/ordered-products.entity';
 import { Injectable } from '@nestjs/common';
-import { ProductRepository } from 'src/products/db/products.repository';
+import { ProductRepository } from '../products/db/products.repository';
 import { OrderRepository } from './db/order.repository';
 import { OrderedProductRepository } from './db/ordered-products.repository';
 import {
   CreateOrderedProductDto,
   CreateOrderDto,
 } from './dto/create-order.dto';
-import { Product } from 'src/products/db/products.entity';
+import { Product } from '../products/db/products.entity';
 import { Order } from './db/orders.entity';
-import { User } from 'src/users/db/users.entity';
+import { User } from '../users/db/users.entity';
 
 @Injectable()
 export class OrdersDataService {

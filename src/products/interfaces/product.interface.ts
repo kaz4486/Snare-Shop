@@ -5,5 +5,8 @@ export interface Product {
   name: string;
   photoName: string;
   price: number;
+  category: string;
   stars: number;
+  sale: boolean;
+  bestSeller: boolean;
 }

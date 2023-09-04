@@ -33,7 +33,15 @@ export class Product {
   sale: boolean;
 
   @Column({
+    type: 'bool',
+  })
+  bestSeller: boolean;
+
+  @Column({
     default: 1,
   })
   stars: number;
+
+  @Column({ type: 'text', nullable: false })
+  category: string;
 }

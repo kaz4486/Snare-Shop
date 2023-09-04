@@ -16,6 +16,8 @@ const Products = () => {
   const products = useSelector(getProducts);
   const request = useSelector(getRequest);
 
+  console.log(products);
+
   const [selectedFilter, setSelectedFilter] = useState('');
   console.log(selectedFilter);
 
@@ -50,7 +52,7 @@ const Products = () => {
         >
           <option value="sale">sale</option>
           <option value="">all</option>
-          <option value="best seller">best seller</option>
+          <option value="bestSeller">best seller</option>
         </select>
 
         {arrayChunk(filteredProducts, filteredProducts.length).map((row, i) => (

@@ -1,5 +1,5 @@
 import { Min } from 'class-validator';
-import { User } from 'src/users/db/users.entity';
+import { User } from '../../users/db/users.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
