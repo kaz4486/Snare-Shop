@@ -1,35 +1,49 @@
+import { PrismaService } from '../shared/services/prisma.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Like } from 'typeorm';
-import { Product } from './db/products.entity';
+
+import { Product } from '@prisma/client';
+
 import { ProductRepository } from './db/products.repository';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class ProductsDataService {
-  constructor(private productRepository: ProductRepository) {}
+  constructor(private prismaService: PrismaService) {}
   private products: Array<Product> = [];
 
   getAllProducts(): Promise<Product[]> {
-    return this.productRepository.find();
+    return this.prismaService.product.findMany();
   }
 
-  async getProductById(id: string): Promise<Product> {
-    return await this.productRepository.findOneBy({ id });
+  async getProductById(id: Product['id']): Promise<Product | null> {
+    return await this.prismaService.product.findUnique({ where: { id } });
   }
 
   async getProductsByName(name: string): Promise<Product[]> {
-    return await this.productRepository.findBy({ name: Like(`%${name}%`) });
+    return await this.prismaService.product.findMany({
+      where: { name: `%${name}%` },
+    });
   }
 
-  async updateProductRating(id: string, stars: number): Promise<Product> {
-    const product = await this.productRepository.findOneBy({ id });
+  public deleteById(id: Product['id']): Promise<Product> {
+    return this.prismaService.product.delete({
+      where: { id },
+    });
+  }
 
-    if (product) {
-      product.stars = stars;
-      await this.productRepository.save(product);
-    } else {
-      throw new NotFoundException();
-    }
+  public create(productData: Omit<Product, 'id'>): Promise<Product> {
+    return this.prismaService.product.create({
+      data: productData,
+    });
+  }
 
-    return product;
+  public updateById(
+    id: Product['id'],
+    productData: Omit<Product, 'id'>,
+  ): Promise<Product> {
+    return this.prismaService.product.update({
+      where: { id },
+      data: productData,
+    });
   }
 }

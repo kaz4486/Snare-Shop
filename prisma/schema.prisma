@@ -13,12 +13,23 @@ datasource db {
 model Product {
   id String @id @default(uuid())
   name String
-  photoName String
+  mainPhoto String
   price Int
+  description String
+  photos Photo[]
   category String
+  count Int
   stars Int
   sale Boolean
   bestSeller Boolean
+  orders Order[]
+}
+
+model Photo {
+  id String @id @default(uuid())
+  name String
+  product  Product @relation(fields: [productId], references: [id])
+  productId String
 }
 
 model User {
@@ -29,4 +40,14 @@ model User {
   street String
   house_number Int 
   city String
+}
+
+
+
+model Order {
+ id String @id @default(uuid())
+ products Product[]
+ client String
+ address String
+ createdAt DateTime @default(now())
 }

@@ -1,3 +1,5 @@
+import { Type } from 'class-transformer';
+import { ValidateNested } from 'class-validator';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity({
@@ -20,7 +22,7 @@ export class Product {
   description: string;
 
   @Column('simple-array')
-  photos: Array<string>;
+  photos: Array<Photo>;
 
   @Column({
     default: 1,
@@ -44,4 +46,14 @@ export class Product {
 
   @Column({ type: 'text', nullable: false })
   category: string;
+}
+
+export class Photo {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  name: string;
+  @ValidateNested({ each: true })
+  @Type(() => Product)
+  product: Array<Product>;
 }
