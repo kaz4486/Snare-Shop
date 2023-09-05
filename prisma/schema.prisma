@@ -22,7 +22,7 @@ model Product {
   stars Int
   sale Boolean
   bestSeller Boolean
-  orders Order[]
+  orderedProduct OrderedProduct[]
 }
 
 model Photo {
@@ -42,12 +42,22 @@ model User {
   city String
 }
 
-
-
 model Order {
  id String @id @default(uuid())
- products Product[]
+ orderedProducts OrderedProduct[]
  client String
  address String
  createdAt DateTime @default(now())
 }
+
+model OrderedProduct {
+id String @id @default(uuid())
+order Order @relation(fields: [orderId], references: [id])
+orderId String
+product Product @relation(fields: [productId], references: [id])
+productId String
+price Float
+count Int
+comment String
+}
+

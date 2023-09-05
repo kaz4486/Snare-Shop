@@ -7,20 +7,21 @@ import {
   CreateOrderedProductDto,
   CreateOrderDto,
 } from './dto/create-order.dto';
-import { Product } from '../products/db/products.entity';
-import { Order } from './db/orders.entity';
+import { Product } from '@prisma/client';
+import { Order } from '@prisma/client';
 import { User } from '../users/db/users.entity';
+import { PrismaService } from 'src/shared/services/prisma.service';
 
 @Injectable()
 export class OrdersDataService {
   constructor(
-    private orderRepository: OrderRepository,
+    private prismaService: PrismaService,
     private productRepository: ProductRepository,
     private orderedProductRepository: OrderedProductRepository,
   ) {}
 
   getAllOrders(): Promise<Order[]> {
-    return this.orderRepository.find();
+    return this.prismaService.order.findMany();
   }
 
   getOrderById(id: string): Promise<Order> {
@@ -85,5 +86,19 @@ export class OrdersDataService {
     // });
 
     return await this.orderRepository.save(orderToSave);
+  }
+
+  public create(
+    orderData: Omit<Order, 'id' | 'createdAt' | 'updatedAt'>,
+  ): Promise<Order> {
+    const { productId, ...otherData } = orderData;
+    return this.prismaService.order.create({
+      data: {
+        ...otherData,
+        product: {
+          connect: { id: productId },
+        },
+      },
+    });
   }
 }
